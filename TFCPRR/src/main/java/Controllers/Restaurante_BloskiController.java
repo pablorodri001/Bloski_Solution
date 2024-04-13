@@ -1,9 +1,9 @@
-package com.example.tfcprr;
+package Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class Restaurante_BloskiController extends GenericController {
     @FXML
     private Label welcomeText;
 
