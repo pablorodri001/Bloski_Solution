@@ -17,7 +17,7 @@ public class Restaurantes_bloski extends Application {
         Parent mainLoader=fxmlLoader.load();
 
 
-        Scene mainscene = new Scene(mainLoader, 600, 600);
+        Scene mainscene = new Scene(mainLoader, 450, 265);
         SceneHandler sceneHandler=new SceneHandler(stage);
         sceneHandler.addScene(SceneHandler.Main_Scene,mainscene);
 
