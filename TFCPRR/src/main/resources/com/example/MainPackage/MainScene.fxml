@@ -3,12 +3,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane prefHeight="265.0" prefWidth="450.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Restaurante_BloskiController">
-    <children>
+<SplitPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+    <items>
+        <!-- Sección de Inicio de Sesión -->
         <VBox alignment="CENTER" spacing="20">
-         <Label text="Label" />
-            <Button prefWidth="192.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14pt;" text="Consultar Horarios" />
-            <Button prefWidth="192.0" style="-fx-background-color: #008CBA; -fx-text-fill: white; -fx-font-size: 14pt;" text="Consultar Inventario" />
+            <Label text="Inicio de Sesión" />
+            <TextField fx:id="txtNombreUsuario" promptText="Nombre de Usuario" />
+            <PasswordField fx:id="txtContrasena" promptText="Contraseña" />
+            <Button fx:id="btnIniciarSesion" text="Iniciar Sesión" />
         </VBox>
-    </children>
-</StackPane>
+
+        <!-- Sección de Registro -->
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Registro" />
+            <TextField fx:id="txtNuevoNombreUsuario" promptText="Nuevo Nombre de Usuario" />
+            <PasswordField fx:id="txtNuevaContrasena" promptText="Nueva Contraseña" />
+            <Button fx:id="btnRegistrarse" text="Registrarse" />
+        </VBox>
+    </items>
+</SplitPane>

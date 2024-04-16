@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class Restaurante_BloskiController extends GenericController {
+public class LoginController extends GenericController {
     @FXML
     private Label welcomeText;
 
