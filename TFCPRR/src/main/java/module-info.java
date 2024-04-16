@@ -1,6 +1,7 @@
 module com.example.tfcprr {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.persistence;
 
 
     opens com.example.MainPackage to javafx.fxml;
