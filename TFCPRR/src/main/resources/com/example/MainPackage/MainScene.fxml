@@ -5,20 +5,19 @@
 
 <SplitPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
     <items>
-        <!-- Sección de Inicio de Sesión -->
         <VBox alignment="CENTER" spacing="20">
             <Label text="Inicio de Sesión" />
             <TextField fx:id="txtNombreUsuario" promptText="Nombre de Usuario" />
             <PasswordField fx:id="txtContrasena" promptText="Contraseña" />
-            <Button fx:id="btnIniciarSesion" text="Iniciar Sesión" />
+            <Button onAction="#onIniciarSesionClick" fx:id="btnIniciarSesion" text="Iniciar Sesión" />
         </VBox>
 
-        <!-- Sección de Registro -->
+
         <VBox alignment="CENTER" spacing="20">
             <Label text="Registro" />
             <TextField fx:id="txtNuevoNombreUsuario" promptText="Nuevo Nombre de Usuario" />
             <PasswordField fx:id="txtNuevaContrasena" promptText="Nueva Contraseña" />
-            <Button fx:id="btnRegistrarse" text="Registrarse" />
+            <Button onAction="#onRegistrarseClick" fx:id="btnRegistrarse" text="Registrarse" />
         </VBox>
     </items>
 </SplitPane>

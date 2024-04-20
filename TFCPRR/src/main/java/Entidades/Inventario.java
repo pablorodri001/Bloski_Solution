@@ -2,6 +2,7 @@ package Entidades;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "Inventario")
 public class Inventario {
