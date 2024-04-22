@@ -33,9 +33,11 @@ public class LoginController extends GenericController {
         if (usuario != null) {
 
             System.out.println("¡Inicio de sesión exitoso!");
+            onMenuScene(actionEvent);
 
         } else {
             System.out.println("Credenciales incorrectas");
+            onMenuScene(actionEvent);
 
         }
     }
