@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class SceneHandler {
     public static final String Main_Scene="mainScene";
     public static final String Menu_Scene="MenuScene";;
+    public static final String Recetas_Scene="RecetasScene";
     private HashMap<String, Scene> scenes;
     private Stage stage;
 

@@ -14,22 +14,27 @@ import java.util.HashMap;
 public class Restaurantes_bloski extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Restaurantes_bloski.class.getResource("MainScene.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(Restaurantes_bloski.class.getResource("MainScene.fxml"));
         FXMLLoader menuLoader = new FXMLLoader(Restaurantes_bloski.class.getResource("Menu.fxml"));
+        FXMLLoader recetasLoader = new FXMLLoader(Restaurantes_bloski.class.getResource("Recetas.fxml"));
 
-        Parent mainLoader = fxmlLoader.load();
+        Parent main = mainLoader.load();
         Parent menu = menuLoader.load();
+        Parent recetas = recetasLoader.load();
 
-        Scene mainScene = new Scene(mainLoader, 450, 265);
+        Scene mainScene = new Scene(main, 450, 265);
         Scene menuScene = new Scene(menu, 450, 265);
+        Scene recetasScene = new Scene(recetas, 450, 265);
 
         SceneHandler sceneHandler = new SceneHandler(stage);
         sceneHandler.addScene(SceneHandler.Main_Scene, mainScene);
         sceneHandler.addScene(SceneHandler.Menu_Scene, menuScene);
+        sceneHandler.addScene(SceneHandler.Recetas_Scene, recetasScene);
 
         HashMap<String, GenericController> controllers = new HashMap<>();
-        controllers.put(SceneHandler.Main_Scene, fxmlLoader.getController());
+        controllers.put(SceneHandler.Main_Scene, mainLoader.getController());
         controllers.put(SceneHandler.Menu_Scene, menuLoader.getController());
+        controllers.put(SceneHandler.Recetas_Scene, recetasLoader.getController());
 
         controllers.values().forEach(genericController -> genericController.setSceneHandler(sceneHandler));
 
