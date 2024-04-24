@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.RecetasController"
+      prefHeight="600.0" prefWidth="800.0" spacing="10" alignment="CENTER">
+
+    <TableView fx:id="recipesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn text="Nombre" prefWidth="200.0"/>
+            <TableColumn text="Tipo" prefWidth="100.0"/>
+            <TableColumn text="Dificultad" prefWidth="100.0"/>
+            <TableColumn text="Tiempo de preparación" prefWidth="150.0"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="BotonMenu" text="Volver al menú" onAction="#onMenu"/>
+    </HBox>
+
+</VBox>

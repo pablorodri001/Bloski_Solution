@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 20-04-2024 a las 13:49:16
+-- Tiempo de generación: 24-04-2024 a las 18:12:23
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -31,6 +31,7 @@ CREATE TABLE `Inventario` (
   `id_producto` int(11) NOT NULL,
   `id_restaurante` int(11) DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
+  `descripcion` text,
   `cantidad` int(11) DEFAULT NULL,
   `precio_unitario` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -39,13 +40,13 @@ CREATE TABLE `Inventario` (
 -- Volcado de datos para la tabla `Inventario`
 --
 
-INSERT INTO `Inventario` (`id_producto`, `id_restaurante`, `nombre`, `cantidad`, `precio_unitario`) VALUES
-(1, 1, 'Pizza Margarita', 30, '9.99'),
-(2, 1, 'Hamburguesa con Queso', 25, '8.50'),
-(3, 1, 'Refresco de Cola', 60, '1.99'),
-(4, 2, 'Ensalada César', 15, '6.99'),
-(5, 2, 'Sándwich de Pollo', 20, '7.50'),
-(6, 2, 'Agua Mineral', 40, '0.99');
+INSERT INTO `Inventario` (`id_producto`, `id_restaurante`, `nombre`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
+(1, 1, 'Pizza Margarita', 'Para hacer la masa de pizza, mezclamos 500g de harina con una pizca de sal y 7g de levadura seca. Añadimos 300ml de agua templada y 2 cucharadas de aceite de oliva. Amasamos bien y dejamos reposar en un lugar cálido durante una hora. Extendemos la masa sobre una bandeja para horno y añadimos salsa de tomate, mozzarella rallada y hojas de albahaca. Horneamos a 200ºC durante 15-20 minutos.', 30, '9.99'),
+(2, 1, 'Hamburguesa con Queso', 'Preparamos la carne mezclando 500g de carne de res picada con una pizca de sal y pimienta. Formamos hamburguesas y las cocinamos en una sartén caliente durante 4-5 minutos por cada lado. Cortamos los panes de hamburguesa por la mitad y los tostamos ligeramente. Montamos la hamburguesa colocando la carne sobre el pan, añadiendo una loncha de queso cheddar, unas hojas de lechuga y una rodaja de tomate. Cerramos con la otra mitad del pan y servimos.', 25, '8.50'),
+(3, 1, 'Refresco de Cola', 'Servimos el refresco de cola bien frío en un vaso con hielo.', 60, '1.99'),
+(4, 2, 'Ensalada César', 'Preparamos primero los picatostes caseros. Calentamos el horno a 180ºC. Frotamos un diente de ajo sobre unas rebanadas de pan y las cortamos en dados. Las aliñamos con un poco de aceite de oliva y las horneamos durante 5 minutos hasta que estén doradas. Para la salsa César, hacemos puré con un diente de ajo y lo mezclamos con aceite, salsa Perrins, zumo de limón, vinagre y una yema de huevo. Batimos bien hasta emulsionar y reservamos. Lavamos y secamos hojas de lechuga romana y las salpimentamos. Añadimos la salsa César por encima, los picatostes y queso parmesano rallado.', 15, '6.99'),
+(5, 2, 'Sándwich de Pollo', 'Cocinamos pechugas de pollo a la parrilla hasta que estén doradas y cocidas. Tostamos rebanadas de pan de molde. Extendemos una capa de mayonesa sobre una rebanada de pan, colocamos las pechugas de pollo, unas hojas de lechuga y unas rodajas de tomate. Cerramos con la otra rebanada de pan y servimos.', 20, '7.50'),
+(6, 2, 'Agua Mineral', 'Servimos el agua mineral en una botella o vaso.', 40, '0.99');
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,13 @@ CREATE TABLE `Usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Volcado de datos para la tabla `Usuarios`
+--
+
+INSERT INTO `Usuarios` (`id_usuario`, `nombre_usuario`, `contrasena`) VALUES
+(1, 'Pablo', 'admin');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -170,7 +178,7 @@ ALTER TABLE `Turnos`
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -180,7 +188,7 @@ ALTER TABLE `Usuarios`
 -- Filtros para la tabla `Inventario`
 --
 ALTER TABLE `Inventario`
-  ADD CONSTRAINT `inventario_ibfk_1` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`);
+  ADD CONSTRAINT `fk_inventario_restaurante` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`);
 
 --
 -- Filtros para la tabla `Turnos`
