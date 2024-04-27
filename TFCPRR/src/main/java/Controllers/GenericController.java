@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 public class GenericController {
     protected SceneHandler sceneHandler;
 
+
+
     public void setSceneHandler(SceneHandler sceneHandler) {
         this.sceneHandler = sceneHandler;
         System.out.println(this);
@@ -14,6 +16,8 @@ public class GenericController {
 
     @FXML
     public void onMenuScene(ActionEvent actionEvent){
+
         this.sceneHandler.changeToScene(SceneHandler.Menu_Scene);
+
     }
 }

@@ -1,6 +1,8 @@
 package com.example.MainPackage;
 
 import Controllers.GenericController;
+import Controllers.MenuController;
+import Controllers.RecetasController;
 import com.example.MainPackage.SceneHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,10 +35,16 @@ public class Restaurantes_bloski extends Application {
 
         HashMap<String, GenericController> controllers = new HashMap<>();
         controllers.put(SceneHandler.Main_Scene, mainLoader.getController());
-        controllers.put(SceneHandler.Menu_Scene, menuLoader.getController());
-        controllers.put(SceneHandler.Recetas_Scene, recetasLoader.getController());
+        GenericController menuController = menuLoader.getController();
+        controllers.put(SceneHandler.Menu_Scene, menuController);
+        GenericController recetasController = recetasLoader.getController();
+        controllers.put(SceneHandler.Recetas_Scene, recetasController);
 
-        controllers.values().forEach(genericController -> genericController.setSceneHandler(sceneHandler));
+        controllers.values().forEach(genericController -> {
+            genericController.setSceneHandler(sceneHandler);
+        });
+
+        ((MenuController) menuController).setRecetasController((RecetasController) recetasController);
 
         stage.setTitle("Restaurante Bloski's");
         stage.setScene(mainScene);
