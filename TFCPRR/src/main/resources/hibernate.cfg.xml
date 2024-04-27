@@ -14,6 +14,10 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="Entidades.Usuarios"/>
+        <mapping class="Entidades.Inventario"/>
+        <mapping class="Entidades.Restaurante"/>
+        <mapping class="Entidades.Turnos"/>
+
 
 
 

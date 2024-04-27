@@ -7,5 +7,6 @@ public class MenuController extends GenericController {
 
     public void onRecetas(ActionEvent actionEvent) {
         this.sceneHandler.changeToScene(SceneHandler.Recetas_Scene);
+
     }
 }

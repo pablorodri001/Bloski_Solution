@@ -2,25 +2,24 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controllers.RecetasController"
-      prefHeight="600.0" prefWidth="800.0" spacing="10" alignment="CENTER">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RecetasController">
 
-    <TableView fx:id="recipesTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="inventarioTable" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn text="Nombre" prefWidth="200.0"/>
-            <TableColumn text="Tipo" prefWidth="100.0"/>
-            <TableColumn text="Dificultad" prefWidth="100.0"/>
-            <TableColumn text="Tiempo de preparación" prefWidth="150.0"/>
+            <TableColumn fx:id="idProductoColumn" text="ID Producto" />
+            <TableColumn fx:id="restauranteColumn" prefWidth="163.0" text="Restaurante" />
+            <TableColumn fx:id="nombreColumn" prefWidth="223.0" text="Nombre" />
+            <TableColumn fx:id="descripcionColumn" prefWidth="300.0" text="Descripción" />
+            <TableColumn fx:id="cantidadColumn" prefWidth="244.0" text="Cantidad" />
+            <TableColumn fx:id="precioUnitarioColumn" prefWidth="89.0" text="Precio Unitario" />
         </columns>
     </TableView>
 
     <HBox alignment="CENTER">
-        <Region HBox.hgrow="ALWAYS"/>
-        <Button fx:id="BotonMenu" text="Volver al menú" onAction="#onMenu"/>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="botonMenu" onAction="#onMenuScene" text="Volver al menú" />
+        <Button fx:id="botonVer" onAction="#verDatos" text="Ver"></Button>
     </HBox>
 
 </VBox>

@@ -1,5 +1,6 @@
 package UtilidadesEntidades;
 
+import Entidades.Inventario;
 import Entidades.Usuarios;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,6 +8,9 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HibernateUtil {
     static  StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
@@ -36,4 +40,14 @@ public class HibernateUtil {
        }
     }
 
+    public static List<Inventario> rellenarInventario() {
+        Session sesion=sf.openSession();
+        sesion.beginTransaction();
+        List<Inventario> inventarioList=new ArrayList<Inventario>();
+        List<Inventario> inventario=sesion.createQuery("SELECT j FROM Inventario j",Inventario.class).list();
+        inventarioList.addAll(inventario);
+        System.out.println(inventarioList);
+        sesion.getTransaction().commit();
+        return inventarioList;
+    }
 }

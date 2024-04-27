@@ -2,7 +2,6 @@ package Entidades;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "Inventario")
 public class Inventario {
@@ -18,6 +17,9 @@ public class Inventario {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+
     @Column(name = "cantidad")
     private Integer cantidad;
 
@@ -27,9 +29,10 @@ public class Inventario {
     public Inventario() {
     }
 
-    public Inventario(Restaurante restaurante, String nombre, Integer cantidad, Double precioUnitario) {
+    public Inventario(Restaurante restaurante, String nombre, String descripcion, Integer cantidad, Double precioUnitario) {
         this.restaurante = restaurante;
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
     }
@@ -58,6 +61,14 @@ public class Inventario {
         this.nombre = nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Integer getCantidad() {
         return cantidad;
     }
@@ -74,3 +85,4 @@ public class Inventario {
         this.precioUnitario = precioUnitario;
     }
 }
+

@@ -4,6 +4,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Restaurante")
 public class Restaurante {
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_restaurante")
