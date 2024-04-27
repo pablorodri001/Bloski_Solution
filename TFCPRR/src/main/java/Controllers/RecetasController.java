@@ -6,9 +6,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
@@ -47,6 +51,19 @@ public class RecetasController extends GenericController implements Initializabl
         cantidadColumn.setCellValueFactory(new PropertyValueFactory<Inventario,Integer>("cantidad"));
         precioUnitarioColumn.setCellValueFactory(new PropertyValueFactory<Inventario,Double>("precioUnitario"));
         listaInventario = FXCollections.observableArrayList();
+
+        inventarioTable.setRowFactory(tv -> {
+            TableRow<Inventario> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                    Inventario inventario = row.getItem();
+                    if (inventario != null) {
+                        mostrarDescripcion(inventario.getDescripcion());
+                    }
+                }
+            });
+            return row;
+        });
     }
 
     @FXML
@@ -58,6 +75,15 @@ public class RecetasController extends GenericController implements Initializabl
             inventarioTable.setItems(listaInventario);
         }
     }
+    private void mostrarDescripcion(String descripcion) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Descripción del Producto");
+        alert.setHeaderText(null);
+        alert.setContentText(descripcion);
+        alert.showAndWait();
+    }
+
+
 
 }
 
