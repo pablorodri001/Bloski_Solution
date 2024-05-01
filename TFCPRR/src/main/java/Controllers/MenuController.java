@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 public class MenuController extends GenericController {
 
     private RecetasController recetasController;
+    private TurnosController turnosController;
 
 
     public void setRecetasController(RecetasController recetasController) {
@@ -20,5 +21,13 @@ public class MenuController extends GenericController {
             System.out.println("RecetasController no ha sido inicializado");
         }
 
+    }
+
+    public void setTurnosController(TurnosController turnosController) {
+        this.turnosController=turnosController;
+    }
+
+    public void onTurnos(ActionEvent actionEvent) {
+        this.sceneHandler.changeToScene(SceneHandler.Turnos_Scene);
     }
 }

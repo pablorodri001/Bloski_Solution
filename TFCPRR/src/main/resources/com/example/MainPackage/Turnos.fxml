@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TurnosController">
+
+    <TableView fx:id="turnosTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idTurnoColumn" text="ID Turno" />
+            <TableColumn fx:id="restauranteColumn" prefWidth="163.0" text="Restaurante" />
+            <TableColumn fx:id="fechaColumn" prefWidth="163.0" text="Fecha" />
+            <TableColumn fx:id="idEmpleadoColumn" prefWidth="163.0" text="ID Empleado" />
+            <TableColumn fx:id="turnoColumn" prefWidth="88.0" text="Turno" />
+            <TableColumn fx:id="descripcionColumn" prefWidth="151.0" text="Descripción" />
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER">
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="botonMenu" onAction="#onMenuScene" text="Volver al menú" />
+    </HBox>
+
+</VBox>

@@ -11,7 +11,7 @@
            prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
 
     <VBox spacing="20" alignment="CENTER">
-        <Button prefHeight="30.0" prefWidth="150.0" text="Horarios" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+        <Button onAction="#onTurnos" prefHeight="30.0" prefWidth="150.0" text="Horarios" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
         <Button prefHeight="30.0" prefWidth="150.0" text="Pedidos" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
         <Button onAction="#onRecetas" prefHeight="30.0" prefWidth="150.0" text="Recetas" style="-fx-background-color: #f1c40f; -fx-text-fill: white;"/>
         <Button prefHeight="30.0" prefWidth="150.0" text="Inventario" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
