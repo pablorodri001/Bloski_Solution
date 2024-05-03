@@ -17,8 +17,9 @@
     </TableView>
 
     <HBox alignment="CENTER">
+        <Button fx:id="botonModificar" onAction="#onModificarTurno" text="Modificar" />
+        <Button fx:id="botonAnadir" onAction="#onAnadirTurno" text="Añadir Turno" />
         <Region HBox.hgrow="ALWAYS" />
-      <Button onAction="#verDatos" mnemonicParsing="false" text="mostrar" />
         <Button fx:id="botonMenu" onAction="#onMenuScene" text="Volver al menú" />
     </HBox>
 

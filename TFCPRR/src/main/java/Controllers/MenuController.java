@@ -29,5 +29,8 @@ public class MenuController extends GenericController {
 
     public void onTurnos(ActionEvent actionEvent) {
         this.sceneHandler.changeToScene(SceneHandler.Turnos_Scene);
+        if(turnosController!=null){
+            turnosController.verDatos();
+        }
     }
 }

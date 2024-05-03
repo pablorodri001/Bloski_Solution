@@ -6,6 +6,7 @@ import UtilidadesEntidades.HibernateUtil;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -54,6 +55,12 @@ public class TurnosController extends GenericController implements Initializable
             listaTurnos.add(i);
             turnosTable.setItems(listaTurnos);
         }
+    }
+
+    public void onModificarTurno(ActionEvent actionEvent) {
+    }
+
+    public void onAnadirTurno(ActionEvent actionEvent) {
     }
 }
 
