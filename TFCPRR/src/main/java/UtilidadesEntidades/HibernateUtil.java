@@ -1,6 +1,7 @@
 package UtilidadesEntidades;
 
 import Entidades.Inventario;
+import Entidades.Turnos;
 import Entidades.Usuarios;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,5 +50,17 @@ public class HibernateUtil {
         System.out.println(inventarioList);
         sesion.getTransaction().commit();
         return inventarioList;
+    }
+
+    public static List<Turnos> rellenarTurno() {
+        Session sesion = sf.openSession();
+        sesion.beginTransaction();
+        List<Turnos> turnoList = new ArrayList<>();
+        List<Turnos> turnos = sesion.createQuery("SELECT t FROM Turnos t", Turnos.class).list();
+        turnoList.addAll(turnos);
+        System.out.println(turnoList);
+        sesion.getTransaction().commit();
+        return turnoList;
+
     }
 }

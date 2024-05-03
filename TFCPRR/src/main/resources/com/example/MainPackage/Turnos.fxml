@@ -18,6 +18,7 @@
 
     <HBox alignment="CENTER">
         <Region HBox.hgrow="ALWAYS" />
+      <Button onAction="#verDatos" mnemonicParsing="false" text="mostrar" />
         <Button fx:id="botonMenu" onAction="#onMenuScene" text="Volver al menú" />
     </HBox>
 
