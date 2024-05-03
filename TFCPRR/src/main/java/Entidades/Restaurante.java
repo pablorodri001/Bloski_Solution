@@ -4,6 +4,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Restaurante")
 public class Restaurante {
+    public Restaurante(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Override
     public String toString() {
         return nombre;

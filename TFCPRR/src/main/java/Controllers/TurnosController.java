@@ -3,18 +3,25 @@ package Controllers;
 import Entidades.Inventario;
 import Entidades.Turnos;
 import UtilidadesEntidades.HibernateUtil;
+import com.example.MainPackage.Restaurantes_bloski;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -46,7 +53,43 @@ public class TurnosController extends GenericController implements Initializable
         idEmpleadoColumn.setCellValueFactory(new PropertyValueFactory<Turnos,Integer>("idEmpleado"));
         turnoColumn.setCellValueFactory(new PropertyValueFactory<Turnos,String>("turno"));
         descripcionColumn.setCellValueFactory(new PropertyValueFactory<Turnos,String>("descripcion"));
+
+        turnosTable.setRowFactory(tv -> {
+            TableRow<Turnos> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                    Turnos turno = row.getItem();
+                    if (turno != null) {
+                        abrirVentanaModificarTurno(turno);
+                    }
+                }
+            });
+            return row;
+        });
     }
+
+    private void abrirVentanaModificarTurno(Turnos turno) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Restaurantes_bloski.class.getResource("ModificarT.fxml"));
+            Parent root = loader.load();
+            ModificarTurnoController controller = loader.getController();
+
+
+            controller.initData(turno);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Modificar Turno");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            verDatos();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void verDatos(){
         listaTurnos.clear();

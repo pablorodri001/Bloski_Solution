@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="Controllers.ModificarTurnoController" prefHeight="200" prefWidth="400" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER" spacing="10" prefWidth="200" style="-fx-padding: 20;">
+        <Label text="Modificar Turno" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <HBox spacing="10">
+            <Label text="Restaurante:" />
+            <TextField fx:id="campoRestaurante" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Fecha:" />
+            <DatePicker fx:id="campoFecha" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="ID Empleado:" />
+            <TextField fx:id="campoIdEmpleado" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Turno:" />
+            <TextField fx:id="campoTurno" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Descripción:" />
+            <TextField fx:id="campoDescripcion" />
+        </HBox>
+
+        <Button text="Guardar Cambios" onAction="#guardarCambios" />
+    </VBox>
+</AnchorPane>
