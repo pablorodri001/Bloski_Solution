@@ -1,6 +1,7 @@
 package Controllers;
 import Entidades.Restaurante;
 import Entidades.Turnos;
+import UtilidadesEntidades.HibernateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -20,29 +21,28 @@ public class ModificarTurnoController {
     private TextField campoTurno;
     @FXML
     private TextField campoDescripcion;
-
+    int idTurno;
+    Restaurante restaurante;
     private Turnos turno;
+
 
     public void initData(Turnos turno) {
         this.turno = turno;
         campoRestaurante.setText(turno.getRestaurante().getNombre());
-
         campoFecha.setValue(dateToLocalDate(turno.getFecha()));
         campoIdEmpleado.setText(String.valueOf(turno.getIdEmpleado()));
         campoTurno.setText(turno.getTurno());
         campoDescripcion.setText(turno.getDescripcion());
+        idTurno=turno.getIdTurno();
+        restaurante=turno.getRestaurante();
     }
+
 
     // Método para guardar los cambios y cerrar la ventana
     @FXML
     private void guardarCambios() {
 
-        turno.setRestaurante(new Restaurante(campoRestaurante.getText()));
-        // Convertir LocalDate a Date
-        turno.setFecha(localDateToDate(campoFecha.getValue()));
-        turno.setIdEmpleado(Integer.parseInt(campoIdEmpleado.getText()));
-        turno.setTurno(campoTurno.getText());
-        turno.setDescripcion(campoDescripcion.getText());
+        HibernateUtil.modificarTurno(idTurno,restaurante,localDateToDate(campoFecha.getValue()),campoTurno.getText(),campoDescripcion.getText());
 
         // Cerrar la ventana
         Stage stage = (Stage) campoRestaurante.getScene().getWindow();

@@ -1,16 +1,18 @@
 package UtilidadesEntidades;
 
 import Entidades.Inventario;
+import Entidades.Restaurante;
 import Entidades.Turnos;
 import Entidades.Usuarios;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HibernateUtil {
@@ -62,5 +64,25 @@ public class HibernateUtil {
         sesion.getTransaction().commit();
         return turnoList;
 
+    }
+    public static void modificarTurno(int idTurno, Restaurante restaurante, Date fecha, String turno, String descripcion) {
+        Session sesion = sf.openSession();
+        sesion.beginTransaction();
+        Query query = sesion.createQuery("UPDATE Turnos SET restaurante = :restaurante, fecha = :fecha, turno = :turno, descripcion = :descripcion WHERE idTurno = :idTurno");
+        query.setParameter("restaurante", restaurante);
+        query.setParameter("fecha", fecha);
+        query.setParameter("turno", turno);
+        query.setParameter("descripcion", descripcion);
+        query.setParameter("idTurno", idTurno);
+        int filasActualizadas = query.executeUpdate();
+
+        sesion.getTransaction().commit();
+        sesion.close();
+
+        if (filasActualizadas > 0) {
+            System.out.println("Turno modificado exitosamente");
+        } else {
+            System.out.println("No se encontró ningún turno con el ID proporcionado");
+        }
     }
 }
