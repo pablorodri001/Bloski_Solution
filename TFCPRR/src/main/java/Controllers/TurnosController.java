@@ -98,10 +98,6 @@ public class TurnosController extends GenericController implements Initializable
         }
     }
 
-    public void onModificarTurno(ActionEvent actionEvent) {
-    }
 
-    public void onAnadirTurno(ActionEvent actionEvent) {
-    }
 }
 

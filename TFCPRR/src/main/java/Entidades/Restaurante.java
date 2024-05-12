@@ -8,6 +8,10 @@ public class Restaurante {
         this.nombre = nombre;
     }
 
+    public Restaurante(int id) {
+        this.idRestaurante=id;
+    }
+
     @Override
     public String toString() {
         return nombre;

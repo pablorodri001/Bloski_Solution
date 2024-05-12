@@ -85,4 +85,21 @@ public class HibernateUtil {
             System.out.println("No se encontró ningún turno con el ID proporcionado");
         }
     }
+
+    public static boolean guardarReceta(Recetas receta) {
+        Session sesion=sf.openSession();
+        sesion.beginTransaction();
+        try{
+            sesion.save(receta);
+            sesion.getTransaction().commit();
+            return true;}
+        catch (Exception e) {
+            if (sesion.getTransaction() != null) {
+                sesion.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 }
