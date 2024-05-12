@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `Inventario`
 --
 
-CREATE TABLE `Inventario` (
+CREATE TABLE `Recetas` (
   `id_producto` int(11) NOT NULL,
   `id_restaurante` int(11) DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE `Inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Inventario`
+-- Volcado de datos para la tabla `Recetas`
 --
 
-INSERT INTO `Inventario` (`id_producto`, `id_restaurante`, `nombre`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
+INSERT INTO `Recetas` (`id_producto`, `id_restaurante`, `nombre`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
 (1, 1, 'Pizza Margarita', 'Para hacer la masa de pizza, mezclamos 500g de harina con una pizca de sal y 7g de levadura seca. Añadimos 300ml de agua templada y 2 cucharadas de aceite de oliva. Amasamos bien y dejamos reposar en un lugar cálido durante una hora. Extendemos la masa sobre una bandeja para horno y añadimos salsa de tomate, mozzarella rallada y hojas de albahaca. Horneamos a 200ºC durante 15-20 minutos.', 30, '9.99'),
 (2, 1, 'Hamburguesa con Queso', 'Preparamos la carne mezclando 500g de carne de res picada con una pizca de sal y pimienta. Formamos hamburguesas y las cocinamos en una sartén caliente durante 4-5 minutos por cada lado. Cortamos los panes de hamburguesa por la mitad y los tostamos ligeramente. Montamos la hamburguesa colocando la carne sobre el pan, añadiendo una loncha de queso cheddar, unas hojas de lechuga y una rodaja de tomate. Cerramos con la otra mitad del pan y servimos.', 25, '8.50'),
 (3, 1, 'Refresco de Cola', 'Servimos el refresco de cola bien frío en un vaso con hielo.', 60, '1.99'),
@@ -126,9 +126,9 @@ INSERT INTO `Usuarios` (`id_usuario`, `nombre_usuario`, `contrasena`) VALUES
 --
 
 --
--- Indices de la tabla `Inventario`
+-- Indices de la tabla `Recetas`
 --
-ALTER TABLE `Inventario`
+ALTER TABLE `Recetas`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `id_restaurante` (`id_restaurante`);
 
@@ -157,9 +157,9 @@ ALTER TABLE `Usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `Inventario`
+-- AUTO_INCREMENT de la tabla `Recetas`
 --
-ALTER TABLE `Inventario`
+ALTER TABLE `Recetas`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
@@ -185,10 +185,10 @@ ALTER TABLE `Usuarios`
 --
 
 --
--- Filtros para la tabla `Inventario`
+-- Filtros para la tabla `Recetas`
 --
-ALTER TABLE `Inventario`
-  ADD CONSTRAINT `fk_inventario_restaurante` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`);
+ALTER TABLE `Recetas`
+  ADD CONSTRAINT `fk_recetas_restaurante` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`);
 
 --
 -- Filtros para la tabla `Turnos`
