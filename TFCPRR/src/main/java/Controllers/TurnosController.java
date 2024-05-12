@@ -1,10 +1,8 @@
 package Controllers;
 
-import Entidades.Inventario;
 import Entidades.Turnos;
 import UtilidadesEntidades.HibernateUtil;
 import com.example.MainPackage.Restaurantes_bloski;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

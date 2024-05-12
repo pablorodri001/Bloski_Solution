@@ -1,6 +1,6 @@
 package Controllers;
 
-import Entidades.Inventario;
+import Entidades.Recetas;
 import UtilidadesEntidades.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +12,6 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
@@ -20,45 +19,45 @@ import java.util.ResourceBundle;
 
 public class RecetasController extends GenericController implements Initializable {
     @FXML
-    private TableView<Inventario> inventarioTable;
+    private TableView<Recetas> inventarioTable;
 
     @FXML
-    private TableColumn<Inventario, Integer> idProductoColumn;
+    private TableColumn<Recetas, Integer> idProductoColumn;
 
     @FXML
-    private TableColumn<Inventario, Integer> restauranteColumn;
+    private TableColumn<Recetas, Integer> restauranteColumn;
 
     @FXML
-    private TableColumn<Inventario, String> nombreColumn;
+    private TableColumn<Recetas, String> nombreColumn;
     @FXML
-    private TableColumn<Inventario,String> descripcionColumn;
-
-    @FXML
-    private TableColumn<Inventario, Integer> cantidadColumn;
+    private TableColumn<Recetas,String> descripcionColumn;
 
     @FXML
-    private TableColumn<Inventario, Double> precioUnitarioColumn;
+    private TableColumn<Recetas, Integer> cantidadColumn;
+
+    @FXML
+    private TableColumn<Recetas, Double> precioUnitarioColumn;
 
 
-    ObservableList<Inventario> listaInventario= FXCollections.observableArrayList();
+    ObservableList<Recetas> listaRecetas = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idProductoColumn.setCellValueFactory(new PropertyValueFactory<Inventario,Integer>("idProducto"));
-        restauranteColumn.setCellValueFactory(new PropertyValueFactory<Inventario,Integer>("restaurante"));
-        nombreColumn.setCellValueFactory(new PropertyValueFactory<Inventario,String>("nombre"));
-        descripcionColumn.setCellValueFactory(new PropertyValueFactory<Inventario,String>("Descripcion"));
-        cantidadColumn.setCellValueFactory(new PropertyValueFactory<Inventario,Integer>("cantidad"));
-        precioUnitarioColumn.setCellValueFactory(new PropertyValueFactory<Inventario,Double>("precioUnitario"));
-        listaInventario = FXCollections.observableArrayList();
+        idProductoColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Integer>("idProducto"));
+        restauranteColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Integer>("restaurante"));
+        nombreColumn.setCellValueFactory(new PropertyValueFactory<Recetas,String>("nombre"));
+        descripcionColumn.setCellValueFactory(new PropertyValueFactory<Recetas,String>("Descripcion"));
+        cantidadColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Integer>("cantidad"));
+        precioUnitarioColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Double>("precioUnitario"));
+        listaRecetas = FXCollections.observableArrayList();
 
         inventarioTable.setRowFactory(tv -> {
-            TableRow<Inventario> row = new TableRow<>();
+            TableRow<Recetas> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
-                    Inventario inventario = row.getItem();
-                    if (inventario != null) {
-                        mostrarDescripcion(inventario.getDescripcion());
+                    Recetas recetas = row.getItem();
+                    if (recetas != null) {
+                        mostrarDescripcion(recetas.getDescripcion());
                     }
                 }
             });
@@ -68,11 +67,11 @@ public class RecetasController extends GenericController implements Initializabl
 
     @FXML
     public void verDatos(){
-        listaInventario.clear();
-        List<Inventario> lista2Inventario= HibernateUtil.rellenarInventario();
-        for(Inventario i:lista2Inventario){
-            listaInventario.add(i);
-            inventarioTable.setItems(listaInventario);
+        listaRecetas.clear();
+        List<Recetas> lista2Recetas = HibernateUtil.rellenarInventario();
+        for(Recetas i: lista2Recetas){
+            listaRecetas.add(i);
+            inventarioTable.setItems(listaRecetas);
         }
     }
     private void mostrarDescripcion(String descripcion) {

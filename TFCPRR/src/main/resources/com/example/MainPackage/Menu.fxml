@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="Controllers.MenuController"
-           prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
+<StackPane alignment="CENTER" prefHeight="400.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
 
-    <VBox spacing="20" alignment="CENTER">
-        <Button onAction="#onTurnos" prefHeight="30.0" prefWidth="150.0" text="Horarios" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
-        <Button prefHeight="30.0" prefWidth="150.0" text="Pedidos" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
-        <Button onAction="#onRecetas" prefHeight="30.0" prefWidth="150.0" text="Recetas" style="-fx-background-color: #f1c40f; -fx-text-fill: white;"/>
-        <Button prefHeight="30.0" prefWidth="150.0" text="Inventario" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+    <VBox alignment="CENTER" prefHeight="331.0" prefWidth="524.0" spacing="20">
+        <Button onAction="#onTurnos" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Horarios" />
+        <Button prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Pedidos" />
+        <Button onAction="#onRecetas" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #f1c40f; -fx-text-fill: white;" text="Recetas" />
+        <Button prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Inventario" />
     </VBox>
 
 </StackPane>

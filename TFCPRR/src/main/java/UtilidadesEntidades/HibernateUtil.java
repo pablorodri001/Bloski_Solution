@@ -1,6 +1,6 @@
 package UtilidadesEntidades;
 
-import Entidades.Inventario;
+import Entidades.Recetas;
 import Entidades.Restaurante;
 import Entidades.Turnos;
 import Entidades.Usuarios;
@@ -43,15 +43,15 @@ public class HibernateUtil {
        }
     }
 
-    public static List<Inventario> rellenarInventario() {
+    public static List<Recetas> rellenarInventario() {
         Session sesion=sf.openSession();
         sesion.beginTransaction();
-        List<Inventario> inventarioList=new ArrayList<Inventario>();
-        List<Inventario> inventario=sesion.createQuery("SELECT j FROM Inventario j",Inventario.class).list();
-        inventarioList.addAll(inventario);
-        System.out.println(inventarioList);
+        List<Recetas> recetasList =new ArrayList<Recetas>();
+        List<Recetas> recetas =sesion.createQuery("SELECT j FROM Recetas j", Recetas.class).list();
+        recetasList.addAll(recetas);
+        System.out.println(recetasList);
         sesion.getTransaction().commit();
-        return inventarioList;
+        return recetasList;
     }
 
     public static List<Turnos> rellenarTurno() {
