@@ -33,4 +33,8 @@ public class MenuController extends GenericController {
             turnosController.verDatos();
         }
     }
+
+    public void onPedidos(ActionEvent actionEvent) {
+        this.sceneHandler.changeToScene(SceneHandler.Pedidos_Scene);
+    }
 }

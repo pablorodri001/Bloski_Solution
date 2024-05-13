@@ -7,7 +7,7 @@
 
     <VBox alignment="CENTER" prefHeight="331.0" prefWidth="524.0" spacing="20">
         <Button onAction="#onTurnos" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Horarios" />
-        <Button prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Pedidos" />
+        <Button onAction="#onPedidos"  prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Pedidos" />
         <Button onAction="#onRecetas" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #f1c40f; -fx-text-fill: white;" text="Recetas" />
         <Button prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Inventario" />
     </VBox>

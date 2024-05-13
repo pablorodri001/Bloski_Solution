@@ -11,6 +11,7 @@ public class SceneHandler {
     public static final String Recetas_Scene="RecetasScene";
 
     public static final String Turnos_Scene="Turnos_Scene";
+    public static final String Pedidos_Scene="Pedidos_Scene";
     private HashMap<String, Scene> scenes;
     private Stage stage;
 
