@@ -93,7 +93,7 @@ public class RecetasController extends GenericController implements Initializabl
         try {
             FXMLLoader loader = new FXMLLoader(Restaurantes_bloski.class.getResource("AñadirReceta.fxml"));
             Parent root = loader.load();
-            AñadirRecetaController controller = loader.getController();
+            AnhadirRecetaController controller = loader.getController();
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
