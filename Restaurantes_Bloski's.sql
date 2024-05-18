@@ -197,6 +197,35 @@ ALTER TABLE `Turnos`
   ADD CONSTRAINT `turnos_ibfk_1` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`);
 COMMIT;
 
+CREATE TABLE `Clientes` (
+  `id_cliente` int(11) NOT NULL,
+  `id_producto` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Índices para la tabla `Clientes`
+--
+
+ALTER TABLE `Clientes`
+  ADD PRIMARY KEY (`id_cliente`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
+-- AUTO_INCREMENT de la tabla `Clientes`
+--
+
+ALTER TABLE `Clientes`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para la tabla `Clientes`
+--
+
+ALTER TABLE `Clientes`
+  ADD CONSTRAINT `fk_clientes_recetas` FOREIGN KEY (`id_producto`) REFERENCES `Recetas` (`id_producto`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
