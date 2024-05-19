@@ -5,6 +5,7 @@ import UtilidadesEntidades.ImageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
@@ -24,9 +25,7 @@ public class PedidosController extends GenericController{
     public Label precioAgua;
     public Label precioCoctel;
     public Label precioBacon;
-
-
-    // Variables para los precios en formato double
+    public ListView Pedido;
     private double pizzaF;
     private double hamburguesaF;
     private double colaF;
@@ -83,7 +82,6 @@ public class PedidosController extends GenericController{
     @FXML
     private ImageView imageView8;
     private void convertirPrecios() {
-        // Convertir los precios de las etiquetas a double
         if (precioPizza != null) {
             String pizzat = precioPizza.getText();
             pizzaF = Double.parseDouble(pizzat.substring(0, pizzat.length() - 1));
@@ -184,6 +182,7 @@ public class PedidosController extends GenericController{
         for (Spinner<Integer> spinner : spinners) {
             spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
         }
+        convertirPrecios();
     }
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
