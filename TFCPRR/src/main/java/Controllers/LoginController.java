@@ -37,7 +37,6 @@ public class LoginController extends GenericController {
 
         } else {
             System.out.println("Credenciales incorrectas");
-            onMenuScene(actionEvent);
 
         }
     }
