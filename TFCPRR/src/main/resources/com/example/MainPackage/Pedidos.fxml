@@ -105,7 +105,7 @@
         <Label fx:id="totalLabel" text="0.00$" />
         <Label text="Introduce Importe:" />
         <TextField fx:id="importeTextField" prefHeight="26.0" prefWidth="20.0" />
-        <Button  onAction="#handleGenerarRecibo" text="Generar Recibo" />
+        <Button onAction="#handleGenerarRecibo" text="Generar Recibo" />
     </VBox>
 
     <columnConstraints>

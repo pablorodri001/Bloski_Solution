@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entidades.Recetas;
 import UtilidadesEntidades.ImageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,18 @@ public class PedidosController extends GenericController{
     public Label precioPollo;
     public Label precioAgua;
     public Label precioCoctel;
+    public Label precioBacon;
+
+
+    // Variables para los precios en formato double
+    private double pizzaF;
+    private double hamburguesaF;
+    private double colaF;
+    private double cesarF;
+    private double polloF;
+    private double aguaF;
+    private double coctelF;
+    private double baconF;
     @FXML
     private Spinner<Integer> pizza;
 
@@ -69,6 +82,41 @@ public class PedidosController extends GenericController{
 
     @FXML
     private ImageView imageView8;
+    private void convertirPrecios() {
+        // Convertir los precios de las etiquetas a double
+        if (precioPizza != null) {
+            String pizzat = precioPizza.getText();
+            pizzaF = Double.parseDouble(pizzat.substring(0, pizzat.length() - 1));
+        }
+        if (precioHamburguesa != null) {
+            String hamburguesat = precioHamburguesa.getText();
+            hamburguesaF = Double.parseDouble(hamburguesat.substring(0, hamburguesat.length() - 1));
+        }
+        if (precioCola != null) {
+            String colat = precioCola.getText();
+            colaF = Double.parseDouble(colat.substring(0, colat.length() - 1));
+        }
+        if (precioCesar != null) {
+            String cesart = precioCesar.getText();
+            cesarF = Double.parseDouble(cesart.substring(0, cesart.length() - 1));
+        }
+        if (precioPollo != null) {
+            String pollot = precioPollo.getText();
+            polloF = Double.parseDouble(pollot.substring(0, pollot.length() - 1));
+        }
+        if (precioAgua != null) {
+            String aguat = precioAgua.getText();
+            aguaF = Double.parseDouble(aguat.substring(0, aguat.length() - 1));
+        }
+        if (precioCoctel != null) {
+            String coctelt = precioCoctel.getText();
+            coctelF = Double.parseDouble(coctelt.substring(0, coctelt.length() - 1));
+        }
+        if (precioBacon != null) {
+            String bacontelt = precioBacon.getText();
+            baconF = Double.parseDouble(bacontelt.substring(0, bacontelt.length() - 1));
+        }
+    }
 
     public void initialize() {
         List<Spinner<Integer>> spinners = new ArrayList<>();
@@ -145,5 +193,24 @@ public class PedidosController extends GenericController{
     }
 
     public void onAnhadirProd(ActionEvent actionEvent) {
+        List<Recetas> productosSeleccionados = new ArrayList<>();
+        productosSeleccionados.add(new Recetas(pizza.getValue(),pizzaF));
+        productosSeleccionados.add(new Recetas( hamburguesa.getValue(),hamburguesaF));
+        productosSeleccionados.add(new Recetas(cola.getValue(),colaF));
+        productosSeleccionados.add(new Recetas(cesar.getValue(),cesarF));
+        productosSeleccionados.add(new Recetas(pollo.getValue(),polloF));
+        productosSeleccionados.add(new Recetas(agua.getValue(),aguaF));
+        productosSeleccionados.add(new Recetas(coctel.getValue(),coctelF));
+        productosSeleccionados.add(new Recetas(bacon.getValue(),baconF));
+
+
+        List<Recetas> productosFiltrados = new ArrayList<>();
+        for (Recetas producto : productosSeleccionados) {
+            if (producto.getCantidad() > 0) {
+                productosFiltrados.add(producto);
+            }
+        }
+        System.out.println(productosFiltrados);
+
     }
 }

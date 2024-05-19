@@ -23,8 +23,25 @@ public class Recetas {
     @Column(name = "cantidad")
     private Integer cantidad;
 
+    @Override
+    public String toString() {
+        return "Recetas{" +
+                "idProducto=" + idProducto +
+                ", restaurante=" + restaurante +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", cantidad=" + cantidad +
+                ", precioUnitario=" + precioUnitario +
+                '}';
+    }
+
     @Column(name = "precio_unitario")
     private Double precioUnitario;
+
+    public Recetas(Integer cantidad, Double precioUnitario) {
+        this.cantidad = cantidad;
+        this.precioUnitario = precioUnitario;
+    }
 
     public Recetas() {
     }
