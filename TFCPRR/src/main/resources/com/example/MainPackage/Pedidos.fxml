@@ -18,7 +18,7 @@
         <ImageView fx:id="imageView1" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="pizza" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdPizza" text="Añadir" />
         </HBox>
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
@@ -29,7 +29,7 @@
         <ImageView fx:id="imageView2" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="hamburguesa" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdHamburguesa" text="Añadir" />
         </HBox>
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="0">
@@ -40,7 +40,7 @@
         <ImageView fx:id="imageView3" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="cola" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdCola" text="Añadir" />
         </HBox>
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="0">
@@ -51,7 +51,7 @@
         <ImageView fx:id="imageView4" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="cesar" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdCesar" text="Añadir" />
         </HBox>
     </VBox>
 
@@ -63,7 +63,7 @@
         <ImageView fx:id="imageView5" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="pollo" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdPollo" text="Añadir" />
         </HBox>
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -74,7 +74,7 @@
         <ImageView fx:id="imageView6" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="agua" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdAgua" text="Añadir" />
         </HBox>
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -85,7 +85,7 @@
         <ImageView fx:id="imageView7" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="coctel" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdCoctel" text="Añadir" />
         </HBox>
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -96,7 +96,7 @@
         <ImageView fx:id="imageView8" fitHeight="100" fitWidth="100" preserveRatio="true" />
         <HBox alignment="CENTER" spacing="5">
             <Spinner fx:id="bacon" prefWidth="80" />
-            <Button onAction="#onAnhadirProd" text="Añadir" />
+            <Button onAction="#onAnhadirProdBacon" text="Añadir" />
         </HBox>
     </VBox>
 

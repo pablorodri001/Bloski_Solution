@@ -191,25 +191,45 @@ public class PedidosController extends GenericController{
         
     }
 
-    public void onAnhadirProd(ActionEvent actionEvent) {
-        List<Recetas> productosSeleccionados = new ArrayList<>();
-        productosSeleccionados.add(new Recetas(pizza.getValue(),pizzaF));
-        productosSeleccionados.add(new Recetas( hamburguesa.getValue(),hamburguesaF));
-        productosSeleccionados.add(new Recetas(cola.getValue(),colaF));
-        productosSeleccionados.add(new Recetas(cesar.getValue(),cesarF));
-        productosSeleccionados.add(new Recetas(pollo.getValue(),polloF));
-        productosSeleccionados.add(new Recetas(agua.getValue(),aguaF));
-        productosSeleccionados.add(new Recetas(coctel.getValue(),coctelF));
-        productosSeleccionados.add(new Recetas(bacon.getValue(),baconF));
+    public void onAnhadirProdPizza(ActionEvent actionEvent) {
+        añadirProducto("Pizza", pizza.getValue(), pizzaF);
+    }
 
+    public void onAnhadirProdHamburguesa(ActionEvent actionEvent) {
+        añadirProducto("Hamburguesa", hamburguesa.getValue(), hamburguesaF);
+    }
 
-        List<Recetas> productosFiltrados = new ArrayList<>();
-        for (Recetas producto : productosSeleccionados) {
-            if (producto.getCantidad() > 0) {
-                productosFiltrados.add(producto);
-            }
+    public void onAnhadirProdCola(ActionEvent actionEvent) {
+        añadirProducto("Cola", cola.getValue(), colaF);
+    }
+
+    public void onAnhadirProdCesar(ActionEvent actionEvent) {
+        añadirProducto("Cesar", cesar.getValue(), cesarF);
+    }
+
+    public void onAnhadirProdPollo(ActionEvent actionEvent) {
+        añadirProducto("Pollo", pollo.getValue(), polloF);
+    }
+
+    public void onAnhadirProdAgua(ActionEvent actionEvent) {
+        añadirProducto("Agua", agua.getValue(), aguaF);
+    }
+
+    public void onAnhadirProdCoctel(ActionEvent actionEvent) {
+        añadirProducto("Coctel", coctel.getValue(), coctelF);
+    }
+
+    public void onAnhadirProdBacon(ActionEvent actionEvent) {
+        añadirProducto("Bacon", bacon.getValue(), baconF);
+    }
+
+    private void añadirProducto(String nombre, int cantidad, double precio) {
+        if (cantidad > 0) {
+            Recetas receta = new Recetas(cantidad, precio);
+            String item = cantidad + " x " + nombre + " @ $" + precio + " cada uno";
+            Pedido.getItems().add(item);
         }
-        System.out.println(productosFiltrados);
+    }
+
 
     }
-}
