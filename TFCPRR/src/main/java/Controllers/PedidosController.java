@@ -3,6 +3,7 @@ package Controllers;
 import UtilidadesEntidades.ImageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
@@ -14,6 +15,13 @@ import java.util.List;
 
 public class PedidosController extends GenericController{
 
+    public Label precioPizza;
+    public Label precioHamburguesa;
+    public Label precioCola;
+    public Label precioCesar;
+    public Label precioPollo;
+    public Label precioAgua;
+    public Label precioCoctel;
     @FXML
     private Spinner<Integer> pizza;
 
@@ -131,5 +139,11 @@ public class PedidosController extends GenericController{
     }
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
+        
+        
+        
+    }
+
+    public void onAnhadirProd(ActionEvent actionEvent) {
     }
 }
