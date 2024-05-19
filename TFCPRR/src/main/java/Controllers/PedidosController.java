@@ -1,6 +1,7 @@
 package Controllers;
 
 import UtilidadesEntidades.ImageLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -70,7 +71,7 @@ public class PedidosController extends GenericController{
         spinners.add(pollo);
         spinners.add(agua);
         spinners.add(coctel);
-        spinners.add(pollo);
+        spinners.add(bacon);
 
         File file = new File("src/main/resources/Fotos/pizza-margarita.jpg");
         Image image1=new Image(file.toURI().toString());
@@ -127,5 +128,8 @@ public class PedidosController extends GenericController{
         for (Spinner<Integer> spinner : spinners) {
             spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
         }
+    }
+
+    public void handleGenerarRecibo(ActionEvent actionEvent) {
     }
 }

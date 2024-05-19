@@ -79,7 +79,7 @@
     </VBox>
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <HBox alignment="CENTER" spacing="5">
-            <Label text="Agua valencia" />
+            <Label text="Agua Valencia" />
             <Label fx:id="priceLabel7" text="0.00$" />
         </HBox>
         <ImageView fx:id="imageView7" fitHeight="100" fitWidth="100" preserveRatio="true" />
@@ -99,14 +99,25 @@
             <Button text="Añadir" />
         </HBox>
     </VBox>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+
+    <!-- Nueva columna para el total, campo de importe y botón -->
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.rowSpan="2">
+        <Label text="Importe Total:" />
+        <Label fx:id="totalLabel" text="0.00$" />
+        <Label text="Introduce Importe:" />
+        <TextField fx:id="importeTextField" prefHeight="26.0" prefWidth="20.0" />
+        <Button onAction="#handleGenerarRecibo" text="Generar Recibo" />
+    </VBox>
+
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
 </GridPane>
