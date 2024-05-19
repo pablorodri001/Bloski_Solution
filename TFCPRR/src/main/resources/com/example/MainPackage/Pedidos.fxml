@@ -10,7 +10,7 @@
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
-    <!-- Row 1 -->
+
     <VBox GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="CENTER" spacing="10">
         <HBox alignment="CENTER" spacing="5">
             <Label text="Pizza Margarita"/>
@@ -55,7 +55,7 @@
             <Button text="Añadir"/>
         </HBox>
     </VBox>
-    <!-- Row 2 -->
+
     <VBox GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="CENTER" spacing="10">
         <HBox alignment="CENTER" spacing="5">
             <Label text="Sándwich de Pollo"/>

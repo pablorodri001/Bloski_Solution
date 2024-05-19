@@ -4,7 +4,10 @@ import UtilidadesEntidades.ImageLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,18 +71,12 @@ public class PedidosController extends GenericController{
         spinners.add(spinner6);
         spinners.add(spinner7);
         spinners.add(spinner8);
+        File file = new File("/Users/pablorodriguezrodriguez/Desktop/aguavalencia.png");
+        Image image1=new Image(file.toURI().toString());
+        imageView1.setImage(image1);
+        imageView1.setFitHeight(50);
+        imageView1.setFitWidth(50);
 
-        // Inicializar las imágenes
-        imageView1.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/agua.jpeg", 100, 100).getImage());
-        imageView2.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/agua valencia.png", 100, 100).getImage());
-        imageView3.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/bacon_cheese_fries.png", 100, 100).getImage());
-        imageView4.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/cesar.jpeg", 100, 100).getImage());
-        imageView5.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/cocacola.jpeg", 100, 100).getImage());
-        imageView6.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/espaguetis-con-tomate.jpg", 100, 100).getImage());
-        imageView7.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/istockphoto-520215281-612x612.jpg", 100, 100).getImage());
-        imageView8.setImage(ImageLoader.loadImage("/Users/pablorodriguezrodriguez/Desktop/TFCPRR-main 2/TFCPRR/src/main/resources/Fotos/pollo.jpeg", 100, 100).getImage());
-
-        // Inicializar los spinners
         for (Spinner<Integer> spinner : spinners) {
             spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
         }
