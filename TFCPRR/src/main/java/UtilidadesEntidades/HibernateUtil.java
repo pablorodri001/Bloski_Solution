@@ -1,9 +1,6 @@
 package UtilidadesEntidades;
 
-import Entidades.Recetas;
-import Entidades.Restaurante;
-import Entidades.Turnos;
-import Entidades.Usuarios;
+import Entidades.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -101,5 +98,43 @@ public class HibernateUtil {
             return false;
         }
 
+    }
+    public static boolean insertarPedido(List<Clientes> pedido) {
+        Session sesion = sf.openSession();
+        sesion.beginTransaction();
+        try {
+            for (Clientes cliente : pedido) {
+                sesion.save(cliente);
+            }
+            sesion.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (sesion.getTransaction() != null) {
+                sesion.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            sesion.close();
+        }
+    }
+    public static Recetas obtenerRecetaPorNombre(String nombre) {
+        Session sesion = HibernateUtil.sf.openSession();
+        sesion.beginTransaction();
+        Recetas receta = null;
+        try {
+            receta = sesion.createQuery("FROM Recetas WHERE nombre = :nombre", Recetas.class)
+                    .setParameter("nombre", nombre)
+                    .uniqueResult();
+            sesion.getTransaction().commit();
+        } catch (Exception e) {
+            if (sesion.getTransaction() != null) {
+                sesion.getTransaction().rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            sesion.close();
+        }
+        return receta;
     }
 }

@@ -17,6 +17,7 @@
         <mapping class="Entidades.Recetas"/>
         <mapping class="Entidades.Restaurante"/>
         <mapping class="Entidades.Turnos"/>
+        <mapping class="Entidades.Clientes"/>
 
 
 

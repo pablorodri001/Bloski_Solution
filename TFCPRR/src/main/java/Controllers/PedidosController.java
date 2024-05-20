@@ -1,6 +1,8 @@
 package Controllers;
 
+import Entidades.Clientes;
 import Entidades.Recetas;
+import UtilidadesEntidades.HibernateUtil;
 import UtilidadesEntidades.ImageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -173,8 +175,51 @@ public class PedidosController extends GenericController{
     }
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
-        // Implementar lógica para generar el recibo
+        List<Clientes> pedido = new ArrayList<>();
+        for (String item : Pedido.getItems()) {
+            try {
+                // Dividir el string basado en los espacios
+                String[] partes = item.split(" ");
+                if (partes.length < 3) {
+                    throw new NumberFormatException("Formato incorrecto del ítem: " + item);
+                }
+
+                // Extraer la cantidad (primer elemento)
+                int cantidad = Integer.parseInt(partes[0]);
+
+                // Unir todas las partes del nombre hasta el penúltimo elemento
+                StringBuilder nombreBuilder = new StringBuilder();
+                for (int i = 1; i < partes.length - 1; i++) {
+                    if (i > 1) {
+                        nombreBuilder.append(" ");
+                    }
+                    nombreBuilder.append(partes[i]);
+                }
+                String nombre = nombreBuilder.toString();
+
+                // Extraer el precio (último elemento) quitando el símbolo de $
+                String precioStr = partes[partes.length - 1].replace("$", "");
+                double precio = Double.parseDouble(precioStr);
+
+                Recetas receta = HibernateUtil.obtenerRecetaPorNombre(nombre);
+                if (receta != null) {
+                    Clientes cliente = new Clientes(receta, cantidad, precio);
+                    pedido.add(cliente);
+                }
+            } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
+                System.out.println("Error al procesar el ítem: " + item);
+                e.printStackTrace();
+            }
+        }
+
+        boolean exito = HibernateUtil.insertarPedido(pedido);
+        if (exito) {
+            System.out.println("Pedido guardado exitosamente");
+        } else {
+            System.out.println("Error al guardar el pedido");
+        }
     }
+
 
     public void handleLimpiarPedido(ActionEvent actionEvent) {
         Pedido.getItems().clear();
@@ -183,41 +228,41 @@ public class PedidosController extends GenericController{
     }
 
     public void onAnhadirProdPizza(ActionEvent actionEvent) {
-        añadirProducto("Pizza", pizza.getValue(), pizzaF);
+        añadirProducto("Pizza Margarita", pizza.getValue(), pizzaF);
     }
 
     public void onAnhadirProdHamburguesa(ActionEvent actionEvent) {
-        añadirProducto("Hamburguesa", hamburguesa.getValue(), hamburguesaF);
+        añadirProducto("Hamburguesa con Queso", hamburguesa.getValue(), hamburguesaF);
     }
 
     public void onAnhadirProdCola(ActionEvent actionEvent) {
-        añadirProducto("Cola", cola.getValue(), colaF);
+        añadirProducto("Refresco de Cola", cola.getValue(), colaF);
     }
 
     public void onAnhadirProdCesar(ActionEvent actionEvent) {
-        añadirProducto("Cesar", cesar.getValue(), cesarF);
+        añadirProducto("Ensalada César", cesar.getValue(), cesarF);
     }
 
     public void onAnhadirProdPollo(ActionEvent actionEvent) {
-        añadirProducto("Pollo", pollo.getValue(), polloF);
+        añadirProducto("Sándwich de Pollo", pollo.getValue(), polloF);
     }
 
     public void onAnhadirProdAgua(ActionEvent actionEvent) {
-        añadirProducto("Agua", agua.getValue(), aguaF);
+        añadirProducto("Agua Mineral", agua.getValue(), aguaF);
     }
 
     public void onAnhadirProdCoctel(ActionEvent actionEvent) {
-        añadirProducto("Coctel", coctel.getValue(), coctelF);
+        añadirProducto("agua de valencia", coctel.getValue(), coctelF);
     }
 
     public void onAnhadirProdBacon(ActionEvent actionEvent) {
-        añadirProducto("Bacon", bacon.getValue(), baconF);
+        añadirProducto("BaconCheeseFries", bacon.getValue(), baconF);
     }
 
     private void añadirProducto(String nombre, int cantidad, double precio) {
         if (cantidad > 0) {
             Recetas receta = new Recetas(cantidad, precio);
-            String item = cantidad + " " + nombre + "$" + precio + " cada uno";
+            String item = cantidad + " " + nombre + " " + precio + "$";
             Pedido.getItems().add(item);
             total += cantidad * precio;
             totalLabel.setText(String.format("%.2f$", total));

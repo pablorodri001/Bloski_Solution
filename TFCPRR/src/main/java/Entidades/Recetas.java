@@ -35,6 +35,10 @@ public class Recetas {
                 '}';
     }
 
+    public Recetas(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Column(name = "precio_unitario")
     private Double precioUnitario;
 
