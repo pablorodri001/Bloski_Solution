@@ -103,9 +103,8 @@
     <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.rowSpan="2">
       <ListView fx:id="Pedido" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" />
         <Label text="Importe Total:" />
-        <Label fx:id="totalLabel" minWidth="100.0" text="0.00$" />
-        <Label text="Introduce Importe:" />
-        <TextField fx:id="importeTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="50.0" />
+        <Label fx:id="totalLabel" minWidth="47.0" prefHeight="17.0" prefWidth="47.0" text="0.00$" textAlignment="CENTER" />
+        <Label text="Introduce Importe:" textAlignment="CENTER" />
         <Button onAction="#handleGenerarRecibo" text="Generar Recibo" />
     </VBox>
 
