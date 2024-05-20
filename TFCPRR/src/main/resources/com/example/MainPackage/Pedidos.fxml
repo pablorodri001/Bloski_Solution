@@ -106,6 +106,7 @@
         <Label fx:id="totalLabel" minWidth="47.0" prefHeight="17.0" prefWidth="47.0" text="0.00$" textAlignment="CENTER" />
         <Label text="Introduce Importe:" textAlignment="CENTER" />
         <Button onAction="#handleGenerarRecibo" text="Generar Recibo" />
+        <Button onAction="#handleLimpiarPedido" text="Limpiar Pedido" />
     </VBox>
 
     <columnConstraints>

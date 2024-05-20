@@ -25,7 +25,10 @@ public class PedidosController extends GenericController{
     public Label precioAgua;
     public Label precioCoctel;
     public Label precioBacon;
-    public ListView Pedido;
+    public ListView<String> Pedido;
+    public Label totalLabel;
+    private double total = 0.0;
+
     private double pizzaF;
     private double hamburguesaF;
     private double colaF;
@@ -34,53 +37,41 @@ public class PedidosController extends GenericController{
     private double aguaF;
     private double coctelF;
     private double baconF;
+
     @FXML
     private Spinner<Integer> pizza;
-
     @FXML
     private Spinner<Integer> hamburguesa;
-
     @FXML
     private Spinner<Integer> cola;
-
     @FXML
     private Spinner<Integer> cesar;
-
     @FXML
     private Spinner<Integer> pollo;
-
     @FXML
     private Spinner<Integer> agua;
-
     @FXML
     private Spinner<Integer> coctel;
-
     @FXML
     private Spinner<Integer> bacon;
 
     @FXML
     private ImageView imageView1;
-
     @FXML
     private ImageView imageView2;
-
     @FXML
     private ImageView imageView3;
-
     @FXML
     private ImageView imageView4;
-
     @FXML
     private ImageView imageView5;
-
     @FXML
     private ImageView imageView6;
-
     @FXML
     private ImageView imageView7;
-
     @FXML
     private ImageView imageView8;
+
     private void convertirPrecios() {
         if (precioPizza != null) {
             String pizzat = precioPizza.getText();
@@ -128,56 +119,52 @@ public class PedidosController extends GenericController{
         spinners.add(bacon);
 
         File file = new File("src/main/resources/Fotos/pizza-margarita.jpg");
-        Image image1=new Image(file.toURI().toString());
+        Image image1 = new Image(file.toURI().toString());
         imageView1.setImage(image1);
         imageView1.setFitHeight(100);
         imageView1.setFitWidth(100);
 
         File file2 = new File("src/main/resources/Fotos/istockphoto-520215281-612x612.jpg");
-        Image image2=new Image(file2.toURI().toString());
+        Image image2 = new Image(file2.toURI().toString());
         imageView2.setImage(image2);
         imageView2.setFitHeight(100);
         imageView2.setFitWidth(100);
 
         File file3 = new File("src/main/resources/Fotos/cocacola.jpeg");
-        Image image3=new Image(file3.toURI().toString());
+        Image image3 = new Image(file3.toURI().toString());
         imageView3.setImage(image3);
         imageView3.setFitHeight(100);
         imageView3.setFitWidth(100);
 
         File file4 = new File("src/main/resources/Fotos/cesar.jpeg");
-        Image image4=new Image(file4.toURI().toString());
+        Image image4 = new Image(file4.toURI().toString());
         imageView4.setImage(image4);
         imageView4.setFitHeight(100);
         imageView4.setFitWidth(100);
 
         File file5 = new File("src/main/resources/Fotos/pollo.jpeg");
-        Image image5=new Image(file5.toURI().toString());
+        Image image5 = new Image(file5.toURI().toString());
         imageView5.setImage(image5);
         imageView5.setFitHeight(100);
         imageView5.setFitWidth(100);
 
         File file6 = new File("src/main/resources/Fotos/agua.jpeg");
-        Image image6=new Image(file6.toURI().toString());
+        Image image6 = new Image(file6.toURI().toString());
         imageView6.setImage(image6);
         imageView6.setFitHeight(100);
         imageView6.setFitWidth(100);
 
         File file7 = new File("src/main/resources/Fotos/aguavalencia.png");
-        Image image7=new Image(file7.toURI().toString());
+        Image image7 = new Image(file7.toURI().toString());
         imageView7.setImage(image7);
         imageView7.setFitHeight(100);
         imageView7.setFitWidth(100);
 
         File file8 = new File("src/main/resources/Fotos/bacon_cheese_fries.png");
-        Image image8=new Image(file8.toURI().toString());
+        Image image8 = new Image(file8.toURI().toString());
         imageView8.setImage(image8);
         imageView8.setFitHeight(100);
         imageView8.setFitWidth(100);
-
-
-
-
 
         for (Spinner<Integer> spinner : spinners) {
             spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
@@ -186,9 +173,13 @@ public class PedidosController extends GenericController{
     }
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
-        
-        
-        
+        // Implementar lógica para generar el recibo
+    }
+
+    public void handleLimpiarPedido(ActionEvent actionEvent) {
+        Pedido.getItems().clear();
+        total = 0.0;
+        totalLabel.setText(String.format("%.2f$", total));
     }
 
     public void onAnhadirProdPizza(ActionEvent actionEvent) {
@@ -226,10 +217,10 @@ public class PedidosController extends GenericController{
     private void añadirProducto(String nombre, int cantidad, double precio) {
         if (cantidad > 0) {
             Recetas receta = new Recetas(cantidad, precio);
-            String item = cantidad + " x " + nombre + " @ $" + precio + " cada uno";
+            String item = cantidad + " " + nombre + "$" + precio + " cada uno";
             Pedido.getItems().add(item);
+            total += cantidad * precio;
+            totalLabel.setText(String.format("%.2f$", total));
         }
     }
-
-
-    }
+}
