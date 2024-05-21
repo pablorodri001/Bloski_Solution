@@ -223,7 +223,7 @@ public class PedidosController extends GenericController{
 
         try {
             // Instanciar el objeto Mail
-            Mail mail = new Mail("pruebadam888@gmail.com", "pabloelmejor888");
+            Mail mail = new Mail("pruebadam888@gmail.com", "kbtyhsjjrbvppnmi");
 
             // Enviar el correo electrónico con la factura adjunta
             mail.sendEmail(toEmail, subject, body, pdfPath);
