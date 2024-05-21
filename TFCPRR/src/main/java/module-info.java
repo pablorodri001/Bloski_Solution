@@ -6,8 +6,7 @@ module com.example.tfcprr {
     requires java.naming;
     requires transitive java.sql;
     requires java.mail;
-    requires kernel;
-    requires layout;
+    requires itextpdf;
 
     opens com.example.MainPackage to javafx.fxml;
     exports com.example.MainPackage;

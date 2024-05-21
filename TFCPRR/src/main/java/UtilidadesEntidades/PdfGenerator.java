@@ -1,27 +1,29 @@
 package UtilidadesEntidades;
 
 import Entidades.Clientes;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 
 public class PdfGenerator {
 
     public static String generateInvoice(List<Clientes> pedido) {
         String dest = "invoice.pdf";
+        Document document = new Document();
         try {
-            PdfWriter writer = new PdfWriter(dest);
-            com.itextpdf.kernel.pdf.PdfDocument pdfDoc = new com.itextpdf.kernel.pdf.PdfDocument(writer);
-            Document document = new Document(pdfDoc);
+            PdfWriter.getInstance(document, new FileOutputStream(dest));
+            document.open();
 
             document.add(new Paragraph("Factura"));
             document.add(new Paragraph("------------"));
 
-            Table table = new Table(3);
+            PdfPTable table = new PdfPTable(3);
             table.addCell("Cantidad");
             table.addCell("Producto");
             table.addCell("Precio");
@@ -37,9 +39,10 @@ public class PdfGenerator {
             double total = pedido.stream().mapToDouble(c -> c.getCantidad() * c.getPrecio()).sum();
             document.add(new Paragraph("Total: " + total + "$"));
 
-            document.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | DocumentException e) {
             e.printStackTrace();
+        } finally {
+            document.close();
         }
         return dest;
     }
