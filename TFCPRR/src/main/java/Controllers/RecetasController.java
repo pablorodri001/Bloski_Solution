@@ -11,7 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
@@ -31,12 +34,13 @@ public class RecetasController extends GenericController implements Initializabl
     private TableColumn<Recetas, Integer> idProductoColumn;
 
     @FXML
-    private TableColumn<Recetas, Integer> restauranteColumn;
+    private TableColumn<Recetas, String> restauranteColumn;
 
     @FXML
     private TableColumn<Recetas, String> nombreColumn;
+
     @FXML
-    private TableColumn<Recetas,String> descripcionColumn;
+    private TableColumn<Recetas, String> descripcionColumn;
 
     @FXML
     private TableColumn<Recetas, Integer> cantidadColumn;
@@ -44,18 +48,18 @@ public class RecetasController extends GenericController implements Initializabl
     @FXML
     private TableColumn<Recetas, Double> precioUnitarioColumn;
 
-
-    ObservableList<Recetas> listaRecetas = FXCollections.observableArrayList();
+    private ObservableList<Recetas> listaRecetas = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idProductoColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Integer>("idProducto"));
-        restauranteColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Integer>("restaurante"));
-        nombreColumn.setCellValueFactory(new PropertyValueFactory<Recetas,String>("nombre"));
-        descripcionColumn.setCellValueFactory(new PropertyValueFactory<Recetas,String>("Descripcion"));
-        cantidadColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Integer>("cantidad"));
-        precioUnitarioColumn.setCellValueFactory(new PropertyValueFactory<Recetas,Double>("precioUnitario"));
-        listaRecetas = FXCollections.observableArrayList();
+        idProductoColumn.setCellValueFactory(new PropertyValueFactory<>("idProducto"));
+        restauranteColumn.setCellValueFactory(new PropertyValueFactory<>("restaurante"));
+        nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        descripcionColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        precioUnitarioColumn.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
+
+        inventarioTable.setItems(listaRecetas);
 
         inventarioTable.setRowFactory(tv -> {
             TableRow<Recetas> row = new TableRow<>();
@@ -69,17 +73,17 @@ public class RecetasController extends GenericController implements Initializabl
             });
             return row;
         });
+
+        verDatos(); // Cargar datos iniciales
     }
 
     @FXML
-    public void verDatos(){
+    public void verDatos() {
         listaRecetas.clear();
         List<Recetas> lista2Recetas = HibernateUtil.rellenarInventario();
-        for(Recetas i: lista2Recetas){
-            listaRecetas.add(i);
-            inventarioTable.setItems(listaRecetas);
-        }
+        listaRecetas.addAll(lista2Recetas);
     }
+
     private void mostrarDescripcion(String descripcion) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Descripción del Producto");
@@ -107,4 +111,3 @@ public class RecetasController extends GenericController implements Initializabl
         }
     }
 }
-
