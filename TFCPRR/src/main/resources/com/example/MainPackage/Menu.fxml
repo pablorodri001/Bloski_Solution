@@ -3,13 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane alignment="CENTER" prefHeight="400.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
+<StackPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
 
-    <VBox alignment="CENTER" prefHeight="331.0" prefWidth="524.0" spacing="20">
-        <Button onAction="#onTurnos" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Horarios" />
-        <Button onAction="#onPedidos"  prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Pedidos" />
-        <Button onAction="#onRecetas" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #f1c40f; -fx-text-fill: white;" text="Recetas" />
-        <Button prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Inventario" />
-    </VBox>
+    <HBox alignment="CENTER" spacing="20">
+        <!-- Botones a la izquierda -->
+        <VBox alignment="CENTER" prefWidth="150.0" spacing="20">
+            <Button onAction="#onTurnos" prefHeight="30.0" styleClass="menu-button" text="Horarios" />
+            <Button onAction="#onPedidos" prefHeight="30.0" styleClass="menu-button" text="Pedidos" />
+            <Button onAction="#onRecetas" prefHeight="30.0" styleClass="menu-button" text="Recetas" />
+            <Button onAction="#onSalir" prefHeight="30.0" styleClass="menu-button" text="Salir" />
+        </VBox>
+
+        <!-- Carrusel de imágenes con botones de navegación -->
+        <HBox alignment="CENTER" spacing="10">
+            <Button onAction="#onPreviousImage" styleClass="carousel-button" text="⟨" />
+            <StackPane alignment="CENTER" prefHeight="400.0" prefWidth="450.0">
+                <ListView fx:id="carouselListView" orientation="HORIZONTAL" prefHeight="400.0" prefWidth="450.0" />
+            </StackPane>
+            <Button onAction="#onNextImage" styleClass="carousel-button" text="⟩" />
+        </HBox>
+    </HBox>
 
 </StackPane>
