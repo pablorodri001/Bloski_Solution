@@ -180,9 +180,13 @@ public class PedidosController extends GenericController{
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
         List<Clientes> pedido = new ArrayList<>();
+
+        // Obtener el último id de cliente
+        int ultimoIdCliente = HibernateUtil.obtenerUltimoIdCliente();
+        int nuevoIdCliente = ultimoIdCliente + 1;
+
         for (String item : Pedido.getItems()) {
             try {
-                // Dividir el string basado en los espacios
                 String[] partes = item.split(" ");
                 if (partes.length < 3) {
                     throw new NumberFormatException("Formato incorrecto del ítem: " + item);
@@ -204,8 +208,9 @@ public class PedidosController extends GenericController{
 
                 Recetas receta = HibernateUtil.obtenerRecetaPorNombre(nombre);
                 if (receta != null) {
-                    Clientes cliente = new Clientes(receta, cantidad, precio);
-                    pedido.add(cliente);
+                    // Usar el nuevo id del cliente
+                    Clientes nuevoCliente = new Clientes(nuevoIdCliente, receta, cantidad, precio);
+                    pedido.add(nuevoCliente);
                 }
             } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
                 System.out.println("Error al procesar el ítem: " + item);
@@ -213,19 +218,14 @@ public class PedidosController extends GenericController{
             }
         }
 
-        // Generar el recibo en formato PDF
         String pdfPath = PdfGenerator.generateInvoice(pedido);
 
-        // Envío del correo electrónico con la factura adjunta
-        String toEmail = "pablorodrirodri2001@gmail.com"; // Reemplaza con la dirección de correo del destinatario
+        String toEmail = "pablorodrirodri2001@gmail.com";
         String subject = "Factura de pedido";
-        String body = "Adjuntamos la factura de su pedido."; // Cuerpo del correo (opcional)
+        String body = "Adjuntamos la factura de su pedido.";
 
         try {
-            // Instanciar el objeto Mail
             Mail mail = new Mail("pruebadam888@gmail.com", "kbtyhsjjrbvppnmi");
-
-            // Enviar el correo electrónico con la factura adjunta
             mail.sendEmail(toEmail, subject, body, pdfPath);
             System.out.println("Correo electrónico enviado con éxito a " + toEmail);
         } catch (MessagingException | IOException e) {
@@ -233,7 +233,6 @@ public class PedidosController extends GenericController{
             e.printStackTrace();
         }
 
-        // Insertar el pedido en la base de datos
         boolean exito = HibernateUtil.insertarPedido(pedido);
         if (exito) {
             System.out.println("Pedido guardado exitosamente");
@@ -241,6 +240,8 @@ public class PedidosController extends GenericController{
             System.out.println("Error al guardar el pedido");
         }
     }
+
+
 
 
 

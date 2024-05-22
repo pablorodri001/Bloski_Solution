@@ -7,11 +7,17 @@ import javax.persistence.*;
 public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
     @Column(name = "id_cliente")
     private int idCliente;
 
+    @Column(name = "id_producto")
+    private int idProducto;
+
     @ManyToOne
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", insertable = false, updatable = false)
     private Recetas receta;
 
     @Column(name = "cantidad")
@@ -20,13 +26,13 @@ public class Clientes {
     @Column(name = "precio")
     private Double precio;
 
-    public Clientes() {
+    // Getters and Setters
+    public int getId() {
+        return id;
     }
 
-    public Clientes(Recetas receta, Integer cantidad, Double precio) {
-        this.receta = receta;
-        this.cantidad = cantidad;
-        this.precio = precio;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIdCliente() {
@@ -35,6 +41,14 @@ public class Clientes {
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
     public Recetas getReceta() {
@@ -58,6 +72,17 @@ public class Clientes {
     }
 
     public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Clientes() {
+    }
+
+    public Clientes(int idCliente, Recetas receta, Integer cantidad, Double precio) {
+        this.idCliente = idCliente;
+        this.idProducto = receta.getIdProducto();
+        this.receta = receta;
+        this.cantidad = cantidad;
         this.precio = precio;
     }
 }

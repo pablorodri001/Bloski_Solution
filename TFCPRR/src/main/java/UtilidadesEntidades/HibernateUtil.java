@@ -118,6 +118,7 @@ public class HibernateUtil {
             sesion.close();
         }
     }
+
     public static Recetas obtenerRecetaPorNombre(String nombre) {
         Session sesion = HibernateUtil.sf.openSession();
         sesion.beginTransaction();
@@ -136,5 +137,18 @@ public class HibernateUtil {
             sesion.close();
         }
         return receta;
+    }
+    public static int obtenerUltimoIdCliente() {
+        try{Session session = sf.openSession();
+        session.beginTransaction();
+        String hql = "select max(c.idCliente) from Clientes c";
+        Integer maxId = session.createQuery(hql, Integer.class).uniqueResult();
+        return maxId != null ? maxId : 0;
+        }
+        catch (Exception e) {
+            System.err.println("Error al obtener el último idCliente: " + e.getMessage());
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

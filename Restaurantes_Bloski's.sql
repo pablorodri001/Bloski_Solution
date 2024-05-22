@@ -199,32 +199,21 @@ COMMIT;
 
 CREATE TABLE `Clientes` (
   `id_cliente` int(11) NOT NULL,
-  `id_producto` int(11) DEFAULT NULL,
+  `id_producto` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `precio` decimal(10,2) DEFAULT NULL
+  `precio` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id_cliente`, `id_producto`),
+  KEY `id_producto` (`id_producto`),
+  CONSTRAINT `fk_clientes_recetas` FOREIGN KEY (`id_producto`) REFERENCES `Recetas` (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Índices para la tabla `Clientes`
---
-
 ALTER TABLE `Clientes`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `id_producto` (`id_producto`);
+  DROP PRIMARY KEY,
+  ADD COLUMN `id` INT AUTO_INCREMENT PRIMARY KEY FIRST,
+  ADD KEY `id_cliente` (`id_cliente`),
+  MODIFY `id_producto` int(11) NOT NULL;
 
---
--- AUTO_INCREMENT de la tabla `Clientes`
---
 
-ALTER TABLE `Clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para la tabla `Clientes`
---
-
-ALTER TABLE `Clientes`
-  ADD CONSTRAINT `fk_clientes_recetas` FOREIGN KEY (`id_producto`) REFERENCES `Recetas` (`id_producto`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
