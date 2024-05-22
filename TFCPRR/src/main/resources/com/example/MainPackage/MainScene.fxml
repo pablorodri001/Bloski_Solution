@@ -3,21 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+<SplitPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController" orientation="HORIZONTAL" stylesheets="@styles.css">
     <items>
-        <VBox alignment="CENTER" spacing="20">
-            <Label text="Inicio de Sesión" />
-            <TextField fx:id="txtNombreUsuario" promptText="Nombre de Usuario" />
-            <PasswordField fx:id="txtContrasena" promptText="Contraseña" />
-            <Button onAction="#onIniciarSesionClick" fx:id="btnIniciarSesion" text="Iniciar Sesión" />
+        <VBox fx:id="vboxLogin" alignment="CENTER" spacing="20" styleClass="vbox">
+            <Label text="Inicio de Sesión" styleClass="label"/>
+            <TextField fx:id="txtNombreUsuario" promptText="Nombre de Usuario" styleClass="text-field"/>
+            <PasswordField fx:id="txtContrasena" promptText="Contraseña" styleClass="password-field"/>
+            <Button onAction="#onIniciarSesionClick" fx:id="btnIniciarSesion" text="Iniciar Sesión" styleClass="button"/>
         </VBox>
 
-
-        <VBox alignment="CENTER" spacing="20">
-            <Label text="Registro" />
-            <TextField fx:id="txtNuevoNombreUsuario" promptText="Nuevo Nombre de Usuario" />
-            <PasswordField fx:id="txtNuevaContrasena" promptText="Nueva Contraseña" />
-            <Button onAction="#onRegistrarseClick" fx:id="btnRegistrarse" text="Registrarse" />
+        <VBox fx:id="vboxRegister" alignment="CENTER" spacing="20" styleClass="vbox">
+            <Label text="Registro" styleClass="label"/>
+            <TextField fx:id="txtNuevoNombreUsuario" promptText="Nuevo Nombre de Usuario" styleClass="text-field"/>
+            <PasswordField fx:id="txtNuevaContrasena" promptText="Nueva Contraseña" styleClass="password-field"/>
+            <Button onAction="#onRegistrarseClick" fx:id="btnRegistrarse" text="Registrarse" styleClass="button"/>
         </VBox>
     </items>
 </SplitPane>

@@ -1,0 +1,52 @@
+/* styles.css */
+
+/* General styles for SplitPane */
+.split-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 20;
+}
+
+/* Styling for VBox containers */
+.vbox {
+    -fx-background-color: #fff4e6; /* Soft yellow background */
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 0);
+    -fx-font-family: 'Verdana', sans-serif;
+}
+
+/* Styling for labels */
+.label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c8102e; /* McDonald's Red */
+}
+
+/* Styling for text fields and password fields */
+.text-field, .password-field {
+    -fx-font-size: 16px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-padding: 5 10;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-max-width: 200px;
+}
+
+/* Styling for buttons */
+.button {
+    -fx-background-color: #ffc72c; /* McDonald's Yellow */
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-border-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: pointer;
+}
+
+.button:hover {
+    -fx-background-color: #ffb300; /* Slightly darker yellow on hover */
+}
+
