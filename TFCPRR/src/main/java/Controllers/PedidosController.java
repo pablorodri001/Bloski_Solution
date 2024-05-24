@@ -280,7 +280,7 @@ public class PedidosController extends GenericController{
     }
 
     public void onAnhadirProdBacon(ActionEvent actionEvent) {
-        añadirProducto("BaconCheeseFries", bacon.getValue(), baconF);
+        añadirProducto("Bacon Cheese Fries", bacon.getValue(), baconF);
     }
 
     private void añadirProducto(String nombre, int cantidad, double precio) {

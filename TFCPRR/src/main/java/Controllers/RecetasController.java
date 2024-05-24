@@ -74,7 +74,7 @@ public class RecetasController extends GenericController implements Initializabl
             return row;
         });
 
-        verDatos(); // Cargar datos iniciales
+        verDatos();
     }
 
     @FXML
