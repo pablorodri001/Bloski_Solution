@@ -23,7 +23,7 @@ public class MenuController extends GenericController implements Initializable {
 
     private RecetasController recetasController;
     private TurnosController turnosController;
-
+    private PedidosController pedidosController;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCarouselImages();
@@ -70,6 +70,9 @@ public class MenuController extends GenericController implements Initializable {
 
     public void setRecetasController(RecetasController recetasController) {
         this.recetasController = recetasController;
+    }
+    public void setPedidosController(PedidosController pedidosController){
+        this.pedidosController=pedidosController;
     }
 
     public void onRecetas(ActionEvent actionEvent) {

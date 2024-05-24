@@ -107,6 +107,7 @@
         <Label text="Introduce Importe:" textAlignment="CENTER" />
         <Button onAction="#handleGenerarRecibo" text="Generar Recibo" />
         <Button onAction="#handleLimpiarPedido" text="Limpiar Pedido" />
+        <Button onAction="#onMenuScene" text="Volver al menu"/>
     </VBox>
 
     <columnConstraints>

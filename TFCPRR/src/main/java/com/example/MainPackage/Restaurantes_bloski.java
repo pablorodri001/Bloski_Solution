@@ -1,9 +1,6 @@
 package com.example.MainPackage;
 
-import Controllers.GenericController;
-import Controllers.MenuController;
-import Controllers.RecetasController;
-import Controllers.TurnosController;
+import Controllers.*;
 import com.example.MainPackage.SceneHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +49,7 @@ public class Restaurantes_bloski extends Application {
         GenericController turnosController = turnosLoader.getController();
         controllers.put(SceneHandler.Turnos_Scene, turnosController);
         GenericController pedidosController=pedidosLoader.getController();
+        controllers.put(SceneHandler.Pedidos_Scene,pedidosController);
 
 
         controllers.values().forEach(genericController -> {
@@ -60,6 +58,7 @@ public class Restaurantes_bloski extends Application {
 
         ((MenuController) menuController).setRecetasController((RecetasController) recetasController);
         ((MenuController) menuController).setTurnosController((TurnosController) turnosController);
+        ((MenuController) menuController).setPedidosController((PedidosController)pedidosController);
 
         stage.setTitle("Restaurante Bloski's");
         stage.setScene(mainScene);
