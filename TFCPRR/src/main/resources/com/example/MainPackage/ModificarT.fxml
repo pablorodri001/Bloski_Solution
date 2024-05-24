@@ -8,18 +8,13 @@
         <Label text="Modificar Turno" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
         <HBox spacing="10">
-            <Label text="Restaurante:" />
-            <TextField fx:id="campoRestaurante" />
+            <Label text="Usuario:" />
+            <TextField fx:id="campoUsuario" />
         </HBox>
 
         <HBox spacing="10">
             <Label text="Fecha:" />
             <DatePicker fx:id="campoFecha" />
-        </HBox>
-
-        <HBox spacing="10">
-            <Label text="ID Empleado:" />
-            <TextField fx:id="campoIdEmpleado" />
         </HBox>
 
         <HBox spacing="10">

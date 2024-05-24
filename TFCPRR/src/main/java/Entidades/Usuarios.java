@@ -71,4 +71,9 @@ public class Usuarios {
     public void setRestaurante(Restaurante restaurante) {
         this.restaurante = restaurante;
     }
+
+    @Override
+    public String toString() {
+        return nombreUsuario;
+    }
 }

@@ -31,24 +31,22 @@ public class TurnosController extends GenericController implements Initializable
     @FXML
     private TableColumn<Turnos, Integer> idTurnoColumn;
     @FXML
-    private TableColumn<Turnos, Integer> restauranteColumn;
+    private TableColumn<Turnos, String> usuarioColumn;
     @FXML
     private TableColumn<Turnos, Date> fechaColumn;
-    @FXML
-    private TableColumn<Turnos, Integer> idEmpleadoColumn;
     @FXML
     private TableColumn<Turnos, String> turnoColumn;
     @FXML
     private TableColumn<Turnos, String> descripcionColumn;
+
 
     ObservableList<Turnos> listaTurnos= FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idTurnoColumn.setCellValueFactory(new PropertyValueFactory<Turnos,Integer>("idTurno"));
-        restauranteColumn.setCellValueFactory(new PropertyValueFactory<Turnos,Integer>("restaurante"));
+        usuarioColumn.setCellValueFactory(new PropertyValueFactory<Turnos,String>("Usuario"));
         fechaColumn.setCellValueFactory(new PropertyValueFactory<Turnos,Date>("fecha"));
-        idEmpleadoColumn.setCellValueFactory(new PropertyValueFactory<Turnos,Integer>("idEmpleado"));
         turnoColumn.setCellValueFactory(new PropertyValueFactory<Turnos,String>("turno"));
         descripcionColumn.setCellValueFactory(new PropertyValueFactory<Turnos,String>("descripcion"));
 

@@ -8,9 +8,8 @@
     <TableView fx:id="turnosTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="idTurnoColumn" text="ID Turno" />
-            <TableColumn fx:id="restauranteColumn" prefWidth="163.0" text="Restaurante" />
+            <TableColumn fx:id="usuarioColumn" prefWidth="163.0" text="Usuario" />
             <TableColumn fx:id="fechaColumn" prefWidth="163.0" text="Fecha" />
-            <TableColumn fx:id="idEmpleadoColumn" prefWidth="163.0" text="ID Empleado" />
             <TableColumn fx:id="turnoColumn" prefWidth="88.0" text="Turno" />
             <TableColumn fx:id="descripcionColumn" prefWidth="151.0" text="Descripción" />
         </columns>

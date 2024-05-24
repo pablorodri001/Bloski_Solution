@@ -62,11 +62,11 @@ public class HibernateUtil {
         return turnoList;
 
     }
-    public static void modificarTurno(int idTurno, Restaurante restaurante, Date fecha, String turno, String descripcion) {
+    public static void modificarTurno(int idTurno, Usuarios usuario, Date fecha, String turno, String descripcion) {
         Session sesion = sf.openSession();
         sesion.beginTransaction();
-        Query query = sesion.createQuery("UPDATE Turnos SET restaurante = :restaurante, fecha = :fecha, turno = :turno, descripcion = :descripcion WHERE idTurno = :idTurno");
-        query.setParameter("restaurante", restaurante);
+        Query query = sesion.createQuery("UPDATE Turnos SET usuario = :usuario, fecha = :fecha, turno = :turno, descripcion = :descripcion WHERE idTurno = :idTurno");
+        query.setParameter("usuario", usuario);
         query.setParameter("fecha", fecha);
         query.setParameter("turno", turno);
         query.setParameter("descripcion", descripcion);

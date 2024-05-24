@@ -12,14 +12,11 @@ public class Turnos {
     private int idTurno;
 
     @ManyToOne
-    @JoinColumn(name = "id_restaurante", referencedColumnName = "id_restaurante")
-    private Restaurante restaurante;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    private Usuarios usuario;
 
     @Column(name = "fecha")
     private Date fecha;
-
-    @Column(name = "id_empleado")
-    private Integer idEmpleado;
 
     @Column(name = "turno")
     private String turno;
@@ -30,10 +27,9 @@ public class Turnos {
     public Turnos() {
     }
 
-    public Turnos(Restaurante restaurante, Date fecha, Integer idEmpleado, String turno, String descripcion) {
-        this.restaurante = restaurante;
+    public Turnos(Usuarios usuario, Date fecha, String turno, String descripcion) {
+        this.usuario = usuario;
         this.fecha = fecha;
-        this.idEmpleado = idEmpleado;
         this.turno = turno;
         this.descripcion = descripcion;
     }
@@ -46,12 +42,12 @@ public class Turnos {
         this.idTurno = idTurno;
     }
 
-    public Restaurante getRestaurante() {
-        return restaurante;
+    public Usuarios getUsuario() {
+        return usuario;
     }
 
-    public void setRestaurante(Restaurante restaurante) {
-        this.restaurante = restaurante;
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -60,14 +56,6 @@ public class Turnos {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public Integer getIdEmpleado() {
-        return idEmpleado;
-    }
-
-    public void setIdEmpleado(Integer idEmpleado) {
-        this.idEmpleado = idEmpleado;
     }
 
     public String getTurno() {
@@ -86,4 +74,3 @@ public class Turnos {
         this.descripcion = descripcion;
     }
 }
-

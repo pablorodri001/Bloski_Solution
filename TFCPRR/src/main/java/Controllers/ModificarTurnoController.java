@@ -1,62 +1,52 @@
 package Controllers;
-import Entidades.Restaurante;
+
 import Entidades.Turnos;
+import Entidades.Usuarios;
 import UtilidadesEntidades.HibernateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
 public class ModificarTurnoController {
     @FXML
-    private TextField campoRestaurante;
+    private TextField campoUsuario;
     @FXML
     private DatePicker campoFecha;
-    @FXML
-    private TextField campoIdEmpleado;
     @FXML
     private TextField campoTurno;
     @FXML
     private TextField campoDescripcion;
     int idTurno;
-    Restaurante restaurante;
+    Usuarios usuario;
     private Turnos turno;
-
 
     public void initData(Turnos turno) {
         this.turno = turno;
-        campoRestaurante.setText(turno.getRestaurante().getNombre());
+        campoUsuario.setText(turno.getUsuario().getNombreUsuario());
         campoFecha.setValue(dateToLocalDate(turno.getFecha()));
-        campoIdEmpleado.setText(String.valueOf(turno.getIdEmpleado()));
         campoTurno.setText(turno.getTurno());
         campoDescripcion.setText(turno.getDescripcion());
-        idTurno=turno.getIdTurno();
-        restaurante=turno.getRestaurante();
+        idTurno = turno.getIdTurno();
+        usuario = turno.getUsuario();
     }
 
-
-    // Método para guardar los cambios y cerrar la ventana
     @FXML
     private void guardarCambios() {
-
-        HibernateUtil.modificarTurno(idTurno,restaurante,localDateToDate(campoFecha.getValue()),campoTurno.getText(),campoDescripcion.getText());
+        HibernateUtil.modificarTurno(idTurno, usuario, localDateToDate(campoFecha.getValue()), campoTurno.getText(), campoDescripcion.getText());
 
         // Cerrar la ventana
-        Stage stage = (Stage) campoRestaurante.getScene().getWindow();
+        Stage stage = (Stage) campoUsuario.getScene().getWindow();
         stage.close();
     }
-
 
     private LocalDate dateToLocalDate(java.util.Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-
     private java.util.Date localDateToDate(LocalDate localDate) {
         return java.util.Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }
-
