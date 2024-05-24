@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import Entidades.Usuarios;
@@ -22,6 +23,9 @@ public class LoginController extends GenericController {
 
     @FXML
     private PasswordField txtNuevaContrasena;
+
+    @FXML
+    private ChoiceBox<String> choiceRestaurante;
 
     @FXML
     public void onIniciarSesionClick(ActionEvent actionEvent) {
@@ -42,8 +46,16 @@ public class LoginController extends GenericController {
     public void onRegistrarseClick(ActionEvent actionEvent) {
         String nuevoNombreUsuario = txtNuevoNombreUsuario.getText();
         String nuevaContrasena = txtNuevaContrasena.getText();
+        String restauranteSeleccionado = choiceRestaurante.getValue();
 
-        Usuarios nuevoUsuario = new Usuarios(nuevoNombreUsuario, nuevaContrasena);
+        int idRestaurante = 0;
+        if (restauranteSeleccionado.equals("Restaurante Bloski Principal")) {
+            idRestaurante = 1;
+        } else if (restauranteSeleccionado.equals("Restaurante Bloski Sucursal")) {
+            idRestaurante = 2;
+        }
+
+        Usuarios nuevoUsuario = new Usuarios(nuevoNombreUsuario, nuevaContrasena, idRestaurante);
 
         boolean registroExitoso = HibernateUtil.insertarUsuario(nuevoUsuario);
 
@@ -56,6 +68,7 @@ public class LoginController extends GenericController {
         // Limpiar los campos de texto después de intentar registrar
         txtNuevoNombreUsuario.clear();
         txtNuevaContrasena.clear();
+        choiceRestaurante.setValue(null);
     }
 
     private void mostrarAlerta(String titulo, String mensaje, AlertType tipoAlerta) {

@@ -3,6 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <SplitPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController" orientation="HORIZONTAL" stylesheets="@styles.css">
     <items>
         <VBox fx:id="vboxLogin" alignment="CENTER" spacing="20" styleClass="vbox">
@@ -16,7 +18,16 @@
             <Label text="Registro" styleClass="label"/>
             <TextField fx:id="txtNuevoNombreUsuario" promptText="Nuevo Nombre de Usuario" styleClass="text-field"/>
             <PasswordField fx:id="txtNuevaContrasena" promptText="Nueva Contraseña" styleClass="password-field"/>
+            <ChoiceBox fx:id="choiceRestaurante" styleClass="choice-box">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Restaurante Bloski Principal"/>
+                        <String fx:value="Restaurante Bloski Sucursal"/>
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
             <Button onAction="#onRegistrarseClick" fx:id="btnRegistrarse" text="Registrarse" styleClass="button"/>
         </VBox>
     </items>
 </SplitPane>
+

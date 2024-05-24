@@ -43,8 +43,11 @@ CREATE TABLE `Usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_usuario` varchar(100) NOT NULL,
   `contrasena` varchar(255) NOT NULL,
+  `id_restaurante` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `nombre_usuario_UNIQUE` (`nombre_usuario`)
+  UNIQUE KEY `nombre_usuario_UNIQUE` (`nombre_usuario`),
+  KEY `id_restaurante` (`id_restaurante`),
+  CONSTRAINT `fk_usuarios_restaurante` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Clientes` (
@@ -75,9 +78,6 @@ INSERT INTO `Turnos` (`id_turno`, `id_restaurante`, `fecha`, `id_empleado`, `tur
 (10, 2, '2024-04-11', 4, 'Mañana', 'Preparación de ensaladas'),
 (11, 2, '2024-04-11', 5, 'Tarde', 'Preparación de sándwiches'),
 (12, 2, '2024-04-11', 6, 'Noche', 'Limpieza y cierre');
-
-INSERT INTO `Usuarios` (`id_usuario`, `nombre_usuario`, `contrasena`) VALUES
-(1, 'Pablo', 'admin');
 
 INSERT INTO `Recetas` (`id_producto`, `id_restaurante`, `nombre`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
 (1, 1, 'Pizza Margarita', 'Para hacer la masa de pizza, mezclamos 500g de harina con una pizca de sal y 7g de levadura seca. Añadimos 300ml de agua templada y 2 cucharadas de aceite de oliva. Amasamos bien y dejamos reposar en un lugar cálido durante una hora. Extendemos la masa sobre una bandeja para horno y añadimos salsa de tomate, mozzarella rallada y hojas de albahaca. Horneamos a 200ºC durante 15-20 minutos.', 30, '9.99'),

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Usuarios")
-public class Usuarios{
+public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -16,12 +16,20 @@ public class Usuarios{
     @Column(name = "contrasena")
     private String contrasena;
 
+    @Column(name = "id_restaurante")
+    private int idRestaurante;
+
+    @ManyToOne
+    @JoinColumn(name = "id_restaurante", referencedColumnName = "id_restaurante", insertable = false, updatable = false)
+    private Restaurante restaurante;
+
     public Usuarios() {
     }
 
-    public Usuarios(String nombreUsuario, String contrasena) {
+    public Usuarios(String nombreUsuario, String contrasena, int idRestaurante) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
+        this.idRestaurante = idRestaurante;
     }
 
     public int getIdUsuario() {
@@ -46,5 +54,21 @@ public class Usuarios{
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public int getIdRestaurante() {
+        return idRestaurante;
+    }
+
+    public void setIdRestaurante(int idRestaurante) {
+        this.idRestaurante = idRestaurante;
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 }
