@@ -97,5 +97,24 @@ public class TurnosController extends GenericController implements Initializable
     }
 
 
+    @FXML
+    public void onCrearHorario(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Restaurantes_bloski.class.getResource("CrearHorario.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Crear Horario");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            verDatos();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

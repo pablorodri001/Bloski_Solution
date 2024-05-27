@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane fx:controller="Controllers.CrearHorarioController"
+          xmlns:fx="http://javafx.com/fxml/1"
+          alignment="center" hgap="10" vgap="10">
+    <TextField fx:id="campoUsuario" promptText="Usuario" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <DatePicker fx:id="campoFecha" promptText="Fecha" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="campoTurno" promptText="Turno" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="campoDescripcion" promptText="Descripción" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <Button text="Guardar" onAction="#guardarNuevoHorario" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+</GridPane>

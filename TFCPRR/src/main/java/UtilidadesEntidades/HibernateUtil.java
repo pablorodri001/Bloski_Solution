@@ -151,4 +151,21 @@ public class HibernateUtil {
             return 0;
         }
     }
+
+    public static void guardarTurno(Turnos nuevoTurno) {
+        Session sesion=sf.openSession();
+        sesion.beginTransaction();
+        sesion.save(nuevoTurno);
+        sesion.getTransaction().commit();
+    }
+    public static Usuarios buscarUsuarioPorNombre(String nombreUsuario) {
+        try (Session session = sf.openSession()){
+            Query<Usuarios> query = session.createQuery("FROM Usuarios WHERE nombreUsuario = :nombreUsuario", Usuarios.class);
+            query.setParameter("nombreUsuario", nombreUsuario);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
