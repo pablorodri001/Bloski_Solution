@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +25,9 @@ public class MenuController extends GenericController implements Initializable {
     private RecetasController recetasController;
     private TurnosController turnosController;
     private PedidosController pedidosController;
+
+    double imageWidth = 450.0; // Ancho deseado para las imágenes
+    double imageHeight = 400.0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCarouselImages();
@@ -32,16 +36,41 @@ public class MenuController extends GenericController implements Initializable {
 
     private void loadCarouselImages() {
         images = FXCollections.observableArrayList();
+        File file = new File("src/main/resources/Fotos/restaurante1.jpeg");
+        Image image1 = new Image(file.toURI().toString());
+        ImageView imagen1=new ImageView(image1);
+        File file2 = new File("src/main/resources/Fotos/restaurante2.jpeg");
+        Image image2 = new Image(file2.toURI().toString());
+        ImageView imagen2 = new ImageView(image2);
+        File file3 = new File("src/main/resources/Fotos/restaurante3.jpeg");
+        Image image3 = new Image(file3.toURI().toString());
+        ImageView imagen3 = new ImageView(image3);
+        File file4 = new File("src/main/resources/Fotos/restaurante4.jpeg");
+        Image image4 = new Image(file4.toURI().toString());
+        ImageView imagen4 = new ImageView(image4);
+        File file5 = new File("src/main/resources/Fotos/restaurante5.jpeg");
+        Image image5 = new Image(file5.toURI().toString());
+        ImageView imagen5 = new ImageView(image5);
+        File file6 = new File("src/main/resources/Fotos/restaurante6.jpeg");
+        Image image6 = new Image(file6.toURI().toString());
+        ImageView imagen6 = new ImageView(image6);
 
-        // Load images
-       /* images.add(new ImageView(new Image("/path/to/your/image1.jpg")));
-        images.add(new ImageView(new Image("/path/to/your/image2.jpg")));
-        images.add(new ImageView(new Image("/path/to/your/image3.jpg")));*/
+
+
+
+
+        images.add(imagen1);
+        images.add(imagen2);
+        images.add(imagen3);
+        images.add(imagen4);
+        images.add(imagen5);
+        images.add(imagen6);
+
 
         // Set image properties if needed
         for (ImageView imageView : images) {
-            imageView.setFitHeight(400);
-            imageView.setFitWidth(450);
+            imageView.setFitHeight(imageHeight);
+            imageView.setFitWidth(imageWidth);
             imageView.setPreserveRatio(true);
         }
     }
