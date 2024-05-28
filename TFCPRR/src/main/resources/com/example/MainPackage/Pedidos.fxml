@@ -5,109 +5,115 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PedidosController">
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PedidosController" styleClass="grid-pane">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
 
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Pizza Margarita" />
-            <Label fx:id="precioPizza" text="10.00$" />
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Pizza Margarita" styleClass="label" />
+            <Label fx:id="precioPizza" text="10.00$" styleClass="label" />
         </HBox>
         <ImageView fx:id="imageView1" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
             <Spinner fx:id="pizza" prefWidth="80" />
-            <Button onAction="#onAnhadirProdPizza" text="Añadir" />
+            <Button onAction="#onAnhadirProdPizza" text="Añadir" styleClass="button" />
         </HBox>
     </VBox>
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Hamburguesa con Queso" />
-            <Label fx:id="precioHamburguesa" text="8.50$" />
+
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Hamburguesa con Queso" styleClass="label" />
+            <Label fx:id="precioHamburguesa" text="8.50$" styleClass="label" />
         </HBox>
         <ImageView fx:id="imageView2" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
             <Spinner fx:id="hamburguesa" prefWidth="80" />
-            <Button onAction="#onAnhadirProdHamburguesa" text="Añadir" />
+            <Button onAction="#onAnhadirProdHamburguesa" text="Añadir" styleClass="button" />
         </HBox>
     </VBox>
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="0">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Refresco de Cola" />
-            <Label fx:id="precioCola" text="2.00$" />
+
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Refresco de Cola" styleClass="label" />
+            <Label fx:id="precioCola" text="2.00$" styleClass="label" />
         </HBox>
         <ImageView fx:id="imageView3" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
             <Spinner fx:id="cola" prefWidth="80" />
-            <Button onAction="#onAnhadirProdCola" text="Añadir" />
+            <Button onAction="#onAnhadirProdCola" text="Añadir" styleClass="button" />
         </HBox>
     </VBox>
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="0">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Ensalada César" />
-            <Label fx:id="precioCesar" text="6.00$" />
+
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Ensalada César" styleClass="label" />
+            <Label fx:id="precioCesar" text="6.00$" styleClass="label" />
         </HBox>
         <ImageView fx:id="imageView4" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
             <Spinner fx:id="cesar" prefWidth="80" />
-            <Button onAction="#onAnhadirProdCesar" text="Añadir" />
+            <Button onAction="#onAnhadirProdCesar" text="Añadir" styleClass="button" />
         </HBox>
     </VBox>
 
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Sándwich de Pollo" />
-            <Label fx:id="precioPollo" text="5.50$" />
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Sándwich de Pollo" styleClass="label" />
+            <Label fx:id="precioPollo" text="5.50$" styleClass="label" />
         </HBox>
         <ImageView fx:id="imageView5" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
             <Spinner fx:id="pollo" prefWidth="80" />
-            <Button onAction="#onAnhadirProdPollo" text="Añadir" />
-        </HBox>
-    </VBox>
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Agua Mineral" />
-            <Label fx:id="precioAgua" text="1.50$" />
-        </HBox>
-        <ImageView fx:id="imageView6" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
-            <Spinner fx:id="agua" prefWidth="80" />
-            <Button onAction="#onAnhadirProdAgua" text="Añadir" />
-        </HBox>
-    </VBox>
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Agua Valencia" />
-            <Label fx:id="precioCoctel" text="12.50$" />
-        </HBox>
-        <ImageView fx:id="imageView7" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
-            <Spinner fx:id="coctel" prefWidth="80" />
-            <Button onAction="#onAnhadirProdCoctel" text="Añadir" />
-        </HBox>
-    </VBox>
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="1">
-        <HBox alignment="CENTER" spacing="5">
-            <Label text="Bacon Cheese Fries" />
-            <Label fx:id="precioBacon" text="5.99$" />
-        </HBox>
-        <ImageView fx:id="imageView8" fitHeight="100" fitWidth="100" preserveRatio="true" />
-        <HBox alignment="CENTER" spacing="5">
-            <Spinner fx:id="bacon" prefWidth="80" />
-            <Button onAction="#onAnhadirProdBacon" text="Añadir" />
+            <Button onAction="#onAnhadirProdPollo" text="Añadir" styleClass="button" />
         </HBox>
     </VBox>
 
-    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.rowSpan="2">
-      <ListView fx:id="Pedido" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" />
-        <Label text="Importe Total:" />
-        <Label fx:id="totalLabel" minWidth="47.0" prefHeight="17.0" prefWidth="47.0" text="0.00$" textAlignment="CENTER" />
-        <Label text="Introduce Importe:" textAlignment="CENTER" />
-        <Button onAction="#handleGenerarRecibo" text="Generar Recibo" />
-        <Button onAction="#handleLimpiarPedido" text="Limpiar Pedido" />
-        <Button onAction="#onMenuScene" text="Volver al menu"/>
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Agua Mineral" styleClass="label" />
+            <Label fx:id="precioAgua" text="1.50$" styleClass="label" />
+        </HBox>
+        <ImageView fx:id="imageView6" fitHeight="100" fitWidth="100" preserveRatio="true" />
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Spinner fx:id="agua" prefWidth="80" />
+            <Button onAction="#onAnhadirProdAgua" text="Añadir" styleClass="button" />
+        </HBox>
+    </VBox>
+
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Agua Valencia" styleClass="label" />
+            <Label fx:id="precioCoctel" text="12.50$" styleClass="label" />
+        </HBox>
+        <ImageView fx:id="imageView7" fitHeight="100" fitWidth="100" preserveRatio="true" />
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Spinner fx:id="coctel" prefWidth="80" />
+            <Button onAction="#onAnhadirProdCoctel" text="Añadir" styleClass="button" />
+        </HBox>
+    </VBox>
+
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="vbox">
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Label text="Bacon Cheese Fries" styleClass="label" />
+            <Label fx:id="precioBacon" text="5.99$" styleClass="label" />
+        </HBox>
+        <ImageView fx:id="imageView8" fitHeight="100" fitWidth="100" preserveRatio="true" />
+        <HBox alignment="CENTER" spacing="5" styleClass="hbox">
+            <Spinner fx:id="bacon" prefWidth="80" />
+            <Button onAction="#onAnhadirProdBacon" text="Añadir" styleClass="button" />
+        </HBox>
+    </VBox>
+
+    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.rowSpan="2" styleClass="vbox">
+        <ListView fx:id="Pedido" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="list-view" />
+        <Label text="Importe Total:" styleClass="label" />
+        <Label fx:id="totalLabel" minWidth="47.0" prefHeight="17.0" prefWidth="47.0" text="0.00$" textAlignment="CENTER" styleClass="label" />
+        <Label text="Introduce Importe:" textAlignment="CENTER" styleClass="label" />
+        <Button onAction="#handleGenerarRecibo" text="Generar Recibo" styleClass="button" />
+        <Button onAction="#handleLimpiarPedido" text="Limpiar Pedido" styleClass="button" />
+        <Button onAction="#onMenuScene" text="Volver al menu" styleClass="button"/>
     </VBox>
 
     <columnConstraints>
