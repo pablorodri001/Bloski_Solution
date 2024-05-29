@@ -3,7 +3,6 @@ package Controllers;
 import Entidades.Clientes;
 import Entidades.Recetas;
 import UtilidadesEntidades.HibernateUtil;
-import UtilidadesEntidades.ImageLoader;
 import UtilidadesEntidades.Mail;
 import UtilidadesEntidades.PdfGenerator;
 import javafx.event.ActionEvent;
@@ -18,10 +17,11 @@ import javafx.scene.image.ImageView;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PedidosController extends GenericController{
+public class PedidosController extends GenericController {
 
     public Label precioPizza;
     public Label precioHamburguesa;
@@ -124,53 +124,15 @@ public class PedidosController extends GenericController{
         spinners.add(coctel);
         spinners.add(bacon);
 
-        File file = new File("src/main/resources/Fotos/pizza-margarita.jpg");
-        Image image1 = new Image(file.toURI().toString());
-        imageView1.setImage(image1);
-        imageView1.setFitHeight(100);
-        imageView1.setFitWidth(100);
-
-        File file2 = new File("src/main/resources/Fotos/istockphoto-520215281-612x612.jpg");
-        Image image2 = new Image(file2.toURI().toString());
-        imageView2.setImage(image2);
-        imageView2.setFitHeight(100);
-        imageView2.setFitWidth(100);
-
-        File file3 = new File("src/main/resources/Fotos/cocacola.jpeg");
-        Image image3 = new Image(file3.toURI().toString());
-        imageView3.setImage(image3);
-        imageView3.setFitHeight(100);
-        imageView3.setFitWidth(100);
-
-        File file4 = new File("src/main/resources/Fotos/cesar.jpeg");
-        Image image4 = new Image(file4.toURI().toString());
-        imageView4.setImage(image4);
-        imageView4.setFitHeight(100);
-        imageView4.setFitWidth(100);
-
-        File file5 = new File("src/main/resources/Fotos/pollo.jpeg");
-        Image image5 = new Image(file5.toURI().toString());
-        imageView5.setImage(image5);
-        imageView5.setFitHeight(100);
-        imageView5.setFitWidth(100);
-
-        File file6 = new File("src/main/resources/Fotos/agua.jpeg");
-        Image image6 = new Image(file6.toURI().toString());
-        imageView6.setImage(image6);
-        imageView6.setFitHeight(100);
-        imageView6.setFitWidth(100);
-
-        File file7 = new File("src/main/resources/Fotos/aguavalencia.png");
-        Image image7 = new Image(file7.toURI().toString());
-        imageView7.setImage(image7);
-        imageView7.setFitHeight(100);
-        imageView7.setFitWidth(100);
-
-        File file8 = new File("src/main/resources/Fotos/bacon_cheese_fries.png");
-        Image image8 = new Image(file8.toURI().toString());
-        imageView8.setImage(image8);
-        imageView8.setFitHeight(100);
-        imageView8.setFitWidth(100);
+        
+        loadAndSetImage(imageView1, "src/main/resources/Fotos/pizza-margarita.jpg");
+        loadAndSetImage(imageView2, "src/main/resources/Fotos/istockphoto-520215281-612x612.jpg");
+        loadAndSetImage(imageView3, "src/main/resources/Fotos/cocacola.jpeg");
+        loadAndSetImage(imageView4, "src/main/resources/Fotos/cesar.jpeg");
+        loadAndSetImage(imageView5, "src/main/resources/Fotos/pollo.jpeg");
+        loadAndSetImage(imageView6, "src/main/resources/Fotos/agua.jpeg");
+        loadAndSetImage(imageView7, "src/main/resources/Fotos/aguavalencia.png");
+        loadAndSetImage(imageView8, "src/main/resources/Fotos/bacon_cheese_fries.png");
 
         for (Spinner<Integer> spinner : spinners) {
             spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
@@ -178,9 +140,17 @@ public class PedidosController extends GenericController{
         convertirPrecios();
     }
 
+    private void loadAndSetImage(ImageView imageView, String relativePath) {
+        File file = new File(relativePath);
+        String normalizedPath = Paths.get(relativePath).toUri().toString();
+        Image image = new Image(normalizedPath);
+        imageView.setImage(image);
+        imageView.setFitHeight(100);
+        imageView.setFitWidth(100);
+    }
+
     public void handleGenerarRecibo(ActionEvent actionEvent) {
         List<Clientes> pedido = new ArrayList<>();
-
 
         int ultimoIdCliente = HibernateUtil.obtenerUltimoIdCliente();
         int nuevoIdCliente = ultimoIdCliente + 1;
@@ -239,10 +209,6 @@ public class PedidosController extends GenericController{
             System.out.println("Error al guardar el pedido");
         }
     }
-
-
-
-
 
     public void handleLimpiarPedido(ActionEvent actionEvent) {
         Pedido.getItems().clear();
