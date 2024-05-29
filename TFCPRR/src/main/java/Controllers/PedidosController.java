@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,15 +125,16 @@ public class PedidosController extends GenericController {
         spinners.add(coctel);
         spinners.add(bacon);
 
-        
-        loadAndSetImage(imageView1, "src/main/resources/Fotos/pizza-margarita.jpg");
-        loadAndSetImage(imageView2, "src/main/resources/Fotos/istockphoto-520215281-612x612.jpg");
-        loadAndSetImage(imageView3, "src/main/resources/Fotos/cocacola.jpeg");
-        loadAndSetImage(imageView4, "src/main/resources/Fotos/cesar.jpeg");
-        loadAndSetImage(imageView5, "src/main/resources/Fotos/pollo.jpeg");
-        loadAndSetImage(imageView6, "src/main/resources/Fotos/agua.jpeg");
-        loadAndSetImage(imageView7, "src/main/resources/Fotos/aguavalencia.png");
-        loadAndSetImage(imageView8, "src/main/resources/Fotos/bacon_cheese_fries.png");
+
+        loadAndSetImage(imageView1, "Fotos/pizza-margarita.jpg");
+        loadAndSetImage(imageView2, "Fotos/istockphoto-520215281-612x612.jpg");
+        loadAndSetImage(imageView3, "Fotos/cocacola.jpeg");
+        loadAndSetImage(imageView4, "Fotos/cesar.jpeg");
+        loadAndSetImage(imageView5, "Fotos/pollo.jpeg");
+        loadAndSetImage(imageView6, "Fotos/agua.jpeg");
+        loadAndSetImage(imageView7, "Fotos/aguavalencia.png");
+        loadAndSetImage(imageView8, "Fotos/bacon_cheese_fries.png");
+
 
         for (Spinner<Integer> spinner : spinners) {
             spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
@@ -141,13 +143,20 @@ public class PedidosController extends GenericController {
     }
 
     private void loadAndSetImage(ImageView imageView, String relativePath) {
-        File file = new File(relativePath);
-        String normalizedPath = Paths.get(relativePath).toUri().toString();
-        Image image = new Image(normalizedPath);
-        imageView.setImage(image);
-        imageView.setFitHeight(100);
-        imageView.setFitWidth(100);
+        try {
+            // Usar getClass().getResource para obtener la URL del recurso
+            String normalizedPath = getClass().getResource("/" + relativePath).toExternalForm();
+            Image image = new Image(normalizedPath);
+            imageView.setImage(image);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+        } catch (Exception e) {
+            System.err.println("No se pudo cargar la imagen en la ruta: " + relativePath);
+            e.printStackTrace();
+        }
     }
+
+
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
         List<Clientes> pedido = new ArrayList<>();
