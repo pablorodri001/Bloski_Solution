@@ -26,7 +26,5 @@ public class SceneHandler {
 
     public void changeToScene(String sceneName) {
         this.stage.setScene(this.scenes.get(sceneName));
-        // Comment out or remove this line
-        // stage.setFullScreen(true);
     }
 }

@@ -67,7 +67,7 @@ public class MenuController extends GenericController implements Initializable {
         images.add(imagen6);
 
 
-        // Set image properties if needed
+
         for (ImageView imageView : images) {
             imageView.setFitHeight(imageHeight);
             imageView.setFitWidth(imageWidth);

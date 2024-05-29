@@ -25,15 +25,14 @@ public class CrearHorarioController {
 
     @FXML
     private void guardarNuevoHorario() {
-        Usuarios usuario = obtenerUsuarioDesdeCampo(campoUsuario.getText()); // Método para obtener el usuario desde el nombre
+        Usuarios usuario = obtenerUsuarioDesdeCampo(campoUsuario.getText());
         Date fecha = localDateToDate(campoFecha.getValue());
         String turno = campoTurno.getText();
         String descripcion = campoDescripcion.getText();
 
         Turnos nuevoTurno = new Turnos(usuario, fecha, turno, descripcion);
-        HibernateUtil.guardarTurno(nuevoTurno); // Método para guardar el nuevo turno en la base de datos
+        HibernateUtil.guardarTurno(nuevoTurno);
 
-        // Cerrar la ventana
         Stage stage = (Stage) campoUsuario.getScene().getWindow();
         stage.close();
     }
@@ -43,9 +42,6 @@ public class CrearHorarioController {
     }
 
     private Usuarios obtenerUsuarioDesdeCampo(String nombreUsuario) {
-        // Aquí debes implementar la lógica para obtener el objeto Usuarios desde el nombre de usuario
-        // Podrías hacer una consulta a la base de datos para buscar el usuario por su nombre
-        // Si no existe, deberías crear y guardar el nuevo usuario.
         Usuarios usuario = HibernateUtil.buscarUsuarioPorNombre(nombreUsuario);
         if (usuario == null) {
             usuario = new Usuarios();

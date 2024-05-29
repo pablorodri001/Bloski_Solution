@@ -59,7 +59,7 @@ public class Restaurantes_bloski extends Application {
 
         stage.setTitle("Restaurante Bloski's");
         stage.setScene(mainScene);
-        stage.setFullScreen(true); // Set fullscreen mode here
+        stage.setFullScreen(true);
         stage.show();
     }
 

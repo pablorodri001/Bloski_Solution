@@ -181,7 +181,7 @@ public class PedidosController extends GenericController{
     public void handleGenerarRecibo(ActionEvent actionEvent) {
         List<Clientes> pedido = new ArrayList<>();
 
-        // Obtener el último id de cliente
+
         int ultimoIdCliente = HibernateUtil.obtenerUltimoIdCliente();
         int nuevoIdCliente = ultimoIdCliente + 1;
 
@@ -208,7 +208,6 @@ public class PedidosController extends GenericController{
 
                 Recetas receta = HibernateUtil.obtenerRecetaPorNombre(nombre);
                 if (receta != null) {
-                    // Usar el nuevo id del cliente
                     Clientes nuevoCliente = new Clientes(nuevoIdCliente, receta, cantidad, precio);
                     pedido.add(nuevoCliente);
                 }

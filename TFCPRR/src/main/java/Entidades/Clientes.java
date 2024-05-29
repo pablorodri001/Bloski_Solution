@@ -26,7 +26,7 @@ public class Clientes {
     @Column(name = "precio")
     private Double precio;
 
-    // Getters and Setters
+
     public int getId() {
         return id;
     }

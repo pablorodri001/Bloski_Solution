@@ -37,7 +37,6 @@ public class ModificarTurnoController {
     private void guardarCambios() {
         HibernateUtil.modificarTurno(idTurno, usuario, localDateToDate(campoFecha.getValue()), campoTurno.getText(), campoDescripcion.getText());
 
-        // Cerrar la ventana
         Stage stage = (Stage) campoUsuario.getScene().getWindow();
         stage.close();
     }

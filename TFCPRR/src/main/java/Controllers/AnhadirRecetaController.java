@@ -24,7 +24,6 @@ public class AnhadirRecetaController {
 
     @FXML
     private void añadirReceta() {
-        // Recopila los datos de los campos de texto
         int idProducto = Integer.parseInt(campoIdProducto.getText());
         Restaurante restaurante = new Restaurante(Integer.parseInt(campoRestaurante.getText()));
         String nombre = campoNombre.getText();
@@ -39,7 +38,6 @@ public class AnhadirRecetaController {
         HibernateUtil.guardarReceta(receta);
 
 
-        // Cierra la ventana
         Stage stage = (Stage) campoIdProducto.getScene().getWindow();
         stage.close();
     }

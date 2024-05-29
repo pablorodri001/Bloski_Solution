@@ -65,7 +65,7 @@ public class LoginController extends GenericController {
             mostrarAlerta("Error de Registro", "Ya existe un usuario con ese nombre.", AlertType.ERROR);
         }
 
-        // Limpiar los campos de texto después de intentar registrar
+
         txtNuevoNombreUsuario.clear();
         txtNuevaContrasena.clear();
         choiceRestaurante.setValue(null);
