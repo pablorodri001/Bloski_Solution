@@ -1,6 +1,5 @@
 CREATE DATABASE IF NOT EXISTS Restaurante_bloski;
 
-
 USE Restaurante_bloski;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -42,7 +41,7 @@ CREATE TABLE `Turnos` (
   CONSTRAINT `turnos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `Usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Recetas` (
+CREATE TABLE `Productos` (
   `id_producto` int(11) NOT NULL AUTO_INCREMENT,
   `id_restaurante` int(11) DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
@@ -51,10 +50,10 @@ CREATE TABLE `Recetas` (
   `precio_unitario` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id_producto`),
   KEY `id_restaurante` (`id_restaurante`),
-  CONSTRAINT `fk_recetas_restaurante` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`)
+  CONSTRAINT `fk_productos_restaurante` FOREIGN KEY (`id_restaurante`) REFERENCES `Restaurante` (`id_restaurante`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Clientes` (
+CREATE TABLE `Pedidos` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `id_cliente` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
@@ -62,7 +61,7 @@ CREATE TABLE `Clientes` (
   `precio` decimal(10,2) DEFAULT NULL,
   KEY `id_producto` (`id_producto`),
   KEY `id_cliente` (`id_cliente`),
-  CONSTRAINT `fk_clientes_recetas` FOREIGN KEY (`id_producto`) REFERENCES `Recetas` (`id_producto`)
+  CONSTRAINT `fk_pedidos_productos` FOREIGN KEY (`id_producto`) REFERENCES `Productos` (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `Restaurante` (`id_restaurante`, `nombre`, `direccion`, `telefono`) VALUES
@@ -82,7 +81,7 @@ INSERT INTO `Turnos` (`fecha`, `turno`, `descripcion`, `id_usuario`) VALUES
 ('2024-04-11', 'Tarde', 'Preparación de sándwiches', 2),
 ('2024-04-11', 'Noche', 'Limpieza y cierre', 3);
 
-INSERT INTO `Recetas` (`id_restaurante`, `nombre`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
+INSERT INTO `Productos` (`id_restaurante`, `nombre`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
 (1, 'Pizza Margarita', 'Para hacer la masa de pizza, mezclamos 500g de harina con una pizca de sal y 7g de levadura seca. Añadimos 300ml de agua templada y 2 cucharadas de aceite de oliva. Amasamos bien y dejamos reposar en un lugar cálido durante una hora. Extendemos la masa sobre una bandeja para horno y añadimos salsa de tomate, mozzarella rallada y hojas de albahaca. Horneamos a 200ºC durante 15-20 minutos.', 30, 9.99),
 (1, 'Hamburguesa con Queso', 'Preparamos la carne mezclando 500g de carne de res picada con una pizca de sal y pimienta. Formamos hamburguesas y las cocinamos en una sartén caliente durante 4-5 minutos por cada lado. Cortamos los panes de hamburguesa por la mitad y los tostamos ligeramente. Montamos la hamburguesa colocando la carne sobre el pan, añadiendo una loncha de queso cheddar, unas hojas de lechuga y una rodaja de tomate. Cerramos con la otra mitad del pan y servimos.', 25, 8.50),
 (1, 'Refresco de Cola', 'Servimos el refresco de cola bien frío en un vaso con hielo.', 60, 1.99),
