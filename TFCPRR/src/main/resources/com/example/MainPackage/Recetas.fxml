@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="10" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RecetasController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="10" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RecetasController" styleClass="vbox">
 
-    <TableView fx:id="inventarioTable" prefHeight="598.0" prefWidth="859.0" VBox.vgrow="ALWAYS">
+    <TableView fx:id="inventarioTable" prefHeight="598.0" prefWidth="859.0" VBox.vgrow="ALWAYS" styleClass="table-view">
         <columns>
             <TableColumn fx:id="idProductoColumn" text="ID Producto" />
             <TableColumn fx:id="restauranteColumn" prefWidth="150.0" text="Restaurante" />
@@ -16,9 +16,9 @@
         </columns>
     </TableView>
 
-    <HBox alignment="CENTER" spacing="10">
-        <Button fx:id="anhadirReceta" onAction="#onAñadirReceta" text="Añadir Receta" />
-        <Button fx:id="botonMenu" onAction="#onMenuScene" text="Volver al Menú" />
+    <HBox alignment="CENTER" spacing="10" styleClass="hbox">
+        <Button fx:id="anhadirReceta" onAction="#onAñadirReceta" text="Añadir Receta" styleClass="button" />
+        <Button fx:id="botonMenu" onAction="#onMenuScene" text="Volver al Menú" styleClass="button" />
     </HBox>
 
 </VBox>
