@@ -21,22 +21,22 @@ public class AnhadirRecetaController {
     @FXML
     private TextField campoPrecioUnitario;
 
+    public void setInitialId(int id) {
+        campoIdProducto.setText(String.valueOf(id));
+    }
 
     @FXML
     private void añadirReceta() {
         int idProducto = Integer.parseInt(campoIdProducto.getText());
-        Restaurante restaurante = new Restaurante(Integer.parseInt(campoRestaurante.getText()));
+        Restaurante restaurante = new Restaurante(campoRestaurante.getText());
         String nombre = campoNombre.getText();
         String descripcion = campoDescripcion.getText();
         int cantidad = Integer.parseInt(campoCantidad.getText());
         double precioUnitario = Double.parseDouble(campoPrecioUnitario.getText());
 
-
-        Recetas receta = new Recetas(restaurante,nombre,descripcion,cantidad,precioUnitario);
-
+        Recetas receta = new Recetas(restaurante, nombre, descripcion, cantidad, precioUnitario);
 
         HibernateUtil.guardarReceta(receta);
-
 
         Stage stage = (Stage) campoIdProducto.getScene().getWindow();
         stage.close();

@@ -1,6 +1,6 @@
 package UtilidadesEntidades;
 
-import Entidades.Clientes;
+import Entidades.Pedidos;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PdfGenerator {
 
-    public static String generateInvoice(List<Clientes> pedido) {
+    public static String generateInvoice(List<Pedidos> pedido) {
         String dest = "invoice.pdf";
         Document document = new Document();
         try {
@@ -28,7 +28,7 @@ public class PdfGenerator {
             table.addCell("Producto");
             table.addCell("Precio");
 
-            for (Clientes cliente : pedido) {
+            for (Pedidos cliente : pedido) {
                 table.addCell(String.valueOf(cliente.getCantidad()));
                 table.addCell(cliente.getReceta().getNombre());
                 table.addCell(String.valueOf(cliente.getPrecio()) + "$");

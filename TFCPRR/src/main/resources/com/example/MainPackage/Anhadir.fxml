@@ -9,17 +9,17 @@
 
         <HBox prefHeight="26.0" prefWidth="250.0" spacing="10">
             <Label text="ID Producto:" />
-            <TextField fx:id="campoIdProducto" prefHeight="26.0" prefWidth="56.0" />
+            <TextField fx:id="campoIdProducto" prefHeight="26.0" prefWidth="143.0" />
         </HBox>
 
         <HBox spacing="10">
             <Label text="Restaurante:" />
-            <TextField fx:id="campoRestaurante" />
+            <TextField fx:id="campoRestaurante" prefHeight="26.0" prefWidth="138.0" />
         </HBox>
 
         <HBox spacing="10">
             <Label text="Nombre:" />
-            <TextField fx:id="campoNombre" />
+            <TextField fx:id="campoNombre" prefWidth="121.0" />
         </HBox>
 
         <HBox spacing="10">

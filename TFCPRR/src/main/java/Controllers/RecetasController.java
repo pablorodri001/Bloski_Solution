@@ -1,6 +1,7 @@
 package Controllers;
 
 import Entidades.Recetas;
+import Entidades.Usuarios;
 import UtilidadesEntidades.HibernateUtil;
 import com.example.MainPackage.Restaurantes_bloski;
 import javafx.collections.FXCollections;
@@ -58,7 +59,6 @@ public class RecetasController extends GenericController implements Initializabl
         descripcionColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         precioUnitarioColumn.setCellValueFactory(new PropertyValueFactory<>("precioUnitario"));
-
         inventarioTable.setItems(listaRecetas);
 
         inventarioTable.setRowFactory(tv -> {
@@ -95,9 +95,13 @@ public class RecetasController extends GenericController implements Initializabl
     @FXML
     public void onAñadirReceta(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(Restaurantes_bloski.class.getResource("AñadirReceta.fxml"));
+            FXMLLoader loader = new FXMLLoader(Restaurantes_bloski.class.getResource("Anhadir.fxml"));
             Parent root = loader.load();
             AnhadirRecetaController controller = loader.getController();
+
+            // Calcular el siguiente ID
+            int nextId = listaRecetas.isEmpty() ? 1 : listaRecetas.get(listaRecetas.size() - 1).getIdProducto() + 1;
+            controller.setInitialId(nextId);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -110,4 +114,5 @@ public class RecetasController extends GenericController implements Initializabl
             e.printStackTrace();
         }
     }
+
 }

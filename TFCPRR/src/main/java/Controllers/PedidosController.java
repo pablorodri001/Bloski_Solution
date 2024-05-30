@@ -1,6 +1,6 @@
 package Controllers;
 
-import Entidades.Clientes;
+import Entidades.Pedidos;
 import Entidades.Recetas;
 import UtilidadesEntidades.HibernateUtil;
 import UtilidadesEntidades.Mail;
@@ -15,10 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.mail.MessagingException;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,7 +141,6 @@ public class PedidosController extends GenericController {
 
     private void loadAndSetImage(ImageView imageView, String relativePath) {
         try {
-            // Usar getClass().getResource para obtener la URL del recurso
             String normalizedPath = getClass().getResource("/" + relativePath).toExternalForm();
             Image image = new Image(normalizedPath);
             imageView.setImage(image);
@@ -159,7 +155,7 @@ public class PedidosController extends GenericController {
 
 
     public void handleGenerarRecibo(ActionEvent actionEvent) {
-        List<Clientes> pedido = new ArrayList<>();
+        List<Pedidos> pedido = new ArrayList<>();
 
         int ultimoIdCliente = HibernateUtil.obtenerUltimoIdCliente();
         int nuevoIdCliente = ultimoIdCliente + 1;
@@ -187,7 +183,7 @@ public class PedidosController extends GenericController {
 
                 Recetas receta = HibernateUtil.obtenerRecetaPorNombre(nombre);
                 if (receta != null) {
-                    Clientes nuevoCliente = new Clientes(nuevoIdCliente, receta, cantidad, precio);
+                    Pedidos nuevoCliente = new Pedidos(nuevoIdCliente, receta, cantidad, precio);
                     pedido.add(nuevoCliente);
                 }
             } catch (NumberFormatException | StringIndexOutOfBoundsException e) {

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Clientes")
-public class Clientes {
+public class Pedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -75,10 +75,10 @@ public class Clientes {
         this.precio = precio;
     }
 
-    public Clientes() {
+    public Pedidos() {
     }
 
-    public Clientes(int idCliente, Recetas receta, Integer cantidad, Double precio) {
+    public Pedidos(int idCliente, Recetas receta, Integer cantidad, Double precio) {
         this.idCliente = idCliente;
         this.idProducto = receta.getIdProducto();
         this.receta = receta;

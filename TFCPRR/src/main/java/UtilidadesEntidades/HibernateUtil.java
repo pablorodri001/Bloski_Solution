@@ -84,26 +84,36 @@ public class HibernateUtil {
     }
 
     public static boolean guardarReceta(Recetas receta) {
-        Session sesion=sf.openSession();
+        Session sesion = sf.openSession();
         sesion.beginTransaction();
-        try{
+        try {
+
+            Restaurante restaurante = receta.getRestaurante();
+            if (restaurante != null && restaurante.getIdRestaurante() == 0) {
+                sesion.save(restaurante);
+            }
+
+
             sesion.save(receta);
             sesion.getTransaction().commit();
-            return true;}
-        catch (Exception e) {
+            return true;
+        } catch (Exception e) {
             if (sesion.getTransaction() != null) {
                 sesion.getTransaction().rollback();
             }
             e.printStackTrace();
             return false;
+        } finally {
+            sesion.close();
         }
-
     }
-    public static boolean insertarPedido(List<Clientes> pedido) {
+
+
+    public static boolean insertarPedido(List<Pedidos> pedido) {
         Session sesion = sf.openSession();
         sesion.beginTransaction();
         try {
-            for (Clientes cliente : pedido) {
+            for (Pedidos cliente : pedido) {
                 sesion.save(cliente);
             }
             sesion.getTransaction().commit();
