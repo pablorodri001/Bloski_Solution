@@ -1,7 +1,6 @@
 package Controllers;
 
-import Entidades.Recetas;
-import Entidades.Usuarios;
+import Entidades.Productos;
 import UtilidadesEntidades.HibernateUtil;
 import com.example.MainPackage.Restaurantes_bloski;
 import javafx.collections.FXCollections;
@@ -29,27 +28,27 @@ import java.util.ResourceBundle;
 public class RecetasController extends GenericController implements Initializable {
 
     @FXML
-    private TableView<Recetas> inventarioTable;
+    private TableView<Productos> inventarioTable;
 
     @FXML
-    private TableColumn<Recetas, Integer> idProductoColumn;
+    private TableColumn<Productos, Integer> idProductoColumn;
 
     @FXML
-    private TableColumn<Recetas, String> restauranteColumn;
+    private TableColumn<Productos, String> restauranteColumn;
 
     @FXML
-    private TableColumn<Recetas, String> nombreColumn;
+    private TableColumn<Productos, String> nombreColumn;
 
     @FXML
-    private TableColumn<Recetas, String> descripcionColumn;
+    private TableColumn<Productos, String> descripcionColumn;
 
     @FXML
-    private TableColumn<Recetas, Integer> cantidadColumn;
+    private TableColumn<Productos, Integer> cantidadColumn;
 
     @FXML
-    private TableColumn<Recetas, Double> precioUnitarioColumn;
+    private TableColumn<Productos, Double> precioUnitarioColumn;
 
-    private ObservableList<Recetas> listaRecetas = FXCollections.observableArrayList();
+    private ObservableList<Productos> listaRecetas = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,12 +61,12 @@ public class RecetasController extends GenericController implements Initializabl
         inventarioTable.setItems(listaRecetas);
 
         inventarioTable.setRowFactory(tv -> {
-            TableRow<Recetas> row = new TableRow<>();
+            TableRow<Productos> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
-                    Recetas recetas = row.getItem();
-                    if (recetas != null) {
-                        mostrarDescripcion(recetas.getDescripcion());
+                    Productos productos = row.getItem();
+                    if (productos != null) {
+                        mostrarDescripcion(productos.getDescripcion());
                     }
                 }
             });
@@ -80,7 +79,7 @@ public class RecetasController extends GenericController implements Initializabl
     @FXML
     public void verDatos() {
         listaRecetas.clear();
-        List<Recetas> lista2Recetas = HibernateUtil.rellenarInventario();
+        List<Productos> lista2Recetas = HibernateUtil.rellenarInventario();
         listaRecetas.addAll(lista2Recetas);
     }
 
@@ -99,10 +98,8 @@ public class RecetasController extends GenericController implements Initializabl
             Parent root = loader.load();
             AnhadirRecetaController controller = loader.getController();
 
-            // Calcular el siguiente ID
             int nextId = listaRecetas.isEmpty() ? 1 : listaRecetas.get(listaRecetas.size() - 1).getIdProducto() + 1;
             controller.setInitialId(nextId);
-
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Añadir Receta");

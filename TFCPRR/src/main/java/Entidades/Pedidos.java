@@ -3,7 +3,7 @@ package Entidades;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "Pedidos")
 public class Pedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Pedidos {
 
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", insertable = false, updatable = false)
-    private Recetas receta;
+    private Productos receta;
 
     @Column(name = "cantidad")
     private Integer cantidad;
@@ -51,11 +51,11 @@ public class Pedidos {
         this.idProducto = idProducto;
     }
 
-    public Recetas getReceta() {
+    public Productos getReceta() {
         return receta;
     }
 
-    public void setReceta(Recetas receta) {
+    public void setReceta(Productos receta) {
         this.receta = receta;
     }
 
@@ -78,7 +78,7 @@ public class Pedidos {
     public Pedidos() {
     }
 
-    public Pedidos(int idCliente, Recetas receta, Integer cantidad, Double precio) {
+    public Pedidos(int idCliente, Productos receta, Integer cantidad, Double precio) {
         this.idCliente = idCliente;
         this.idProducto = receta.getIdProducto();
         this.receta = receta;

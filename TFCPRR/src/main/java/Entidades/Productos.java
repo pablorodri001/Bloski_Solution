@@ -3,8 +3,8 @@ package Entidades;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Recetas")
-public class Recetas {
+@Table(name = "Productos")
+public class Productos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
@@ -35,22 +35,22 @@ public class Recetas {
                 '}';
     }
 
-    public Recetas(String nombre) {
+    public Productos(String nombre) {
         this.nombre = nombre;
     }
 
     @Column(name = "precio_unitario")
     private Double precioUnitario;
 
-    public Recetas(Integer cantidad, Double precioUnitario) {
+    public Productos(Integer cantidad, Double precioUnitario) {
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
     }
 
-    public Recetas() {
+    public Productos() {
     }
 
-    public Recetas(Restaurante restaurante, String nombre, String descripcion, Integer cantidad, Double precioUnitario) {
+    public Productos(Restaurante restaurante, String nombre, String descripcion, Integer cantidad, Double precioUnitario) {
         this.restaurante = restaurante;
         this.nombre = nombre;
         this.descripcion = descripcion;

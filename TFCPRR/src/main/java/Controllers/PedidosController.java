@@ -1,7 +1,7 @@
 package Controllers;
 
 import Entidades.Pedidos;
-import Entidades.Recetas;
+import Entidades.Productos;
 import UtilidadesEntidades.HibernateUtil;
 import UtilidadesEntidades.Mail;
 import UtilidadesEntidades.PdfGenerator;
@@ -181,7 +181,7 @@ public class PedidosController extends GenericController {
                 String precioStr = partes[partes.length - 1].replace("$", "");
                 double precio = Double.parseDouble(precioStr);
 
-                Recetas receta = HibernateUtil.obtenerRecetaPorNombre(nombre);
+                Productos receta = HibernateUtil.obtenerRecetaPorNombre(nombre);
                 if (receta != null) {
                     Pedidos nuevoCliente = new Pedidos(nuevoIdCliente, receta, cantidad, precio);
                     pedido.add(nuevoCliente);
@@ -255,7 +255,7 @@ public class PedidosController extends GenericController {
 
     private void añadirProducto(String nombre, int cantidad, double precio) {
         if (cantidad > 0) {
-            Recetas receta = new Recetas(cantidad, precio);
+            Productos receta = new Productos(cantidad, precio);
             String item = cantidad + " " + nombre + " " + precio + "$";
             Pedido.getItems().add(item);
             total += cantidad * precio;

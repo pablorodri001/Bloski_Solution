@@ -1,6 +1,6 @@
 package Controllers;
 
-import Entidades.Recetas;
+import Entidades.Productos;
 import Entidades.Restaurante;
 import UtilidadesEntidades.HibernateUtil;
 import javafx.fxml.FXML;
@@ -34,7 +34,7 @@ public class AnhadirRecetaController {
         int cantidad = Integer.parseInt(campoCantidad.getText());
         double precioUnitario = Double.parseDouble(campoPrecioUnitario.getText());
 
-        Recetas receta = new Recetas(restaurante, nombre, descripcion, cantidad, precioUnitario);
+        Productos receta = new Productos(restaurante, nombre, descripcion, cantidad, precioUnitario);
 
         HibernateUtil.guardarReceta(receta);
 

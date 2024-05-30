@@ -40,15 +40,15 @@ public class HibernateUtil {
        }
     }
 
-    public static List<Recetas> rellenarInventario() {
+    public static List<Productos> rellenarInventario() {
         Session sesion=sf.openSession();
         sesion.beginTransaction();
-        List<Recetas> recetasList =new ArrayList<Recetas>();
-        List<Recetas> recetas =sesion.createQuery("SELECT j FROM Recetas j", Recetas.class).list();
-        recetasList.addAll(recetas);
-        System.out.println(recetasList);
+        List<Productos> productosList =new ArrayList<Productos>();
+        List<Productos> recetas =sesion.createQuery("SELECT j FROM Productos j", Productos.class).list();
+        productosList.addAll(recetas);
+        System.out.println(productosList);
         sesion.getTransaction().commit();
-        return recetasList;
+        return productosList;
     }
 
     public static List<Turnos> rellenarTurno() {
@@ -83,7 +83,7 @@ public class HibernateUtil {
         }
     }
 
-    public static boolean guardarReceta(Recetas receta) {
+    public static boolean guardarReceta(Productos receta) {
         Session sesion = sf.openSession();
         sesion.beginTransaction();
         try {
@@ -129,12 +129,12 @@ public class HibernateUtil {
         }
     }
 
-    public static Recetas obtenerRecetaPorNombre(String nombre) {
+    public static Productos obtenerRecetaPorNombre(String nombre) {
         Session sesion = HibernateUtil.sf.openSession();
         sesion.beginTransaction();
-        Recetas receta = null;
+        Productos receta = null;
         try {
-            receta = sesion.createQuery("FROM Recetas WHERE nombre = :nombre", Recetas.class)
+            receta = sesion.createQuery("FROM Productos WHERE nombre = :nombre", Productos.class)
                     .setParameter("nombre", nombre)
                     .uniqueResult();
             sesion.getTransaction().commit();
