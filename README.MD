@@ -1,4 +1,4 @@
-# Restaurante Bloski's - README.md
+# Restaurante Bloski's 
 
 ## Descripción del Proyecto
 Restaurante Bloski’s es una aplicación dedicada al sector hostelero. Su objetivo es brindar ayuda en la gestión de diversas áreas de un restaurante, incluyendo la gestión del personal durante los turnos de servicio, la formación de nuevos miembros del equipo y la generación de facturas durante el servicio.
@@ -78,6 +78,8 @@ JavaMail
 iTextPDF Documentation
 Java Oracle Documentation
 Hibernate Documentation
+
+
 Autor: Pablo Rodríguez Rodríguez
 Tutor: Jesús Ángel Pérez-Roca Fernández
 Proyecto Fin de Ciclo - Desarrollo de Aplicaciones Multiplataforma
