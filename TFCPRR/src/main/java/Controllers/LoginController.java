@@ -38,8 +38,16 @@ public class LoginController extends GenericController {
             System.out.println("¡Inicio de sesión exitoso!");
             onMenuScene(actionEvent);
         } else {
-            System.out.println("Credenciales incorrectas");
+            mostrarAlertaCredencialesIncorrectas();
         }
+    }
+
+    private void mostrarAlertaCredencialesIncorrectas() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Error de inicio de sesión");
+        alerta.setHeaderText(null);
+        alerta.setContentText("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
+        alerta.showAndWait();
     }
 
     @FXML

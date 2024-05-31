@@ -25,11 +25,11 @@ public class Restaurantes_bloski extends Application {
         Parent turnos = turnosLoader.load();
         Parent pedidos = pedidosLoader.load();
 
-        Scene mainScene = new Scene(main, 900, 400);
+        Scene mainScene = new Scene(main, 2000, 1800);
         Scene menuScene = new Scene(menu, 900, 400);
-        Scene recetasScene = new Scene(recetas, 900, 400);
-        Scene turnosScene = new Scene(turnos, 900, 400);
-        Scene pedidosScene = new Scene(pedidos, 900, 400);
+        Scene recetasScene = new Scene(recetas, 2000, 1800);
+        Scene turnosScene = new Scene(turnos, 2000, 1800);
+        Scene pedidosScene = new Scene(pedidos, 2000, 1800);
 
         SceneHandler sceneHandler = new SceneHandler(stage);
         sceneHandler.addScene(SceneHandler.Main_Scene, mainScene);
@@ -59,7 +59,6 @@ public class Restaurantes_bloski extends Application {
 
         stage.setTitle("Restaurante Bloski's");
         stage.setScene(mainScene);
-        stage.setFullScreen(true);
         stage.show();
     }
 
