@@ -16,26 +16,25 @@ Para el correcto funcionamiento de la aplicación, es indispensable contar con e
 
 ### 1. Clonar el Proyecto
 Clona el proyecto usando la siguiente URL:
-```bash
 # SSH
 git clone git@github.com:pablorodri001/TFCPRR.git
 
 # HTTPS
 git clone https://github.com/pablorodri001/TFCPRR.git
 
-2. Iniciar el Servidor Local de Base de Datos
+## 2. Iniciar el Servidor Local de Base de Datos
 Inicia el servidor local de base de datos y abre phpMyAdmin o MySQL Workbench. Luego, ejecuta el script SQL que se encuentra en la carpeta principal del proyecto llamado Restaurantes_Bloski's.sql.
 
-3. Configuración en IntelliJ IDEA
+## 3. Configuración en IntelliJ IDEA
 Abre el proyecto en IntelliJ IDEA:
 
 Dirígete al archivo de configuración hibernate.cfg.xml y modifica el puerto localhost:8889 si tu servidor local usa un puerto diferente.
 Modifica el campo de password con tus credenciales de inicio de sesión en el servidor MySQL.
-4. Ejecutar la Aplicación
+## 4. Ejecutar la Aplicación
 Navega a la clase principal dentro del paquete src/main/java/com.example.MainPackage, llamada Restaurantes_bloski.
 Haz clic en el botón de ejecución para desplegar la interfaz principal.
 
-5. Configuración de Correo Electrónico
+## 5. Configuración de Correo Electrónico
 Para la funcionalidad del apartado de "Generar Pedido" dentro de la sección de pedidos, cambia el correo de destino por el de interés en la clase PedidosController en la línea 223.
 
 Precauciones
@@ -43,28 +42,39 @@ Es imperativo asegurarse de tener el puerto del archivo hibernate.cfg.xml bien c
 
 Manual de Usuario
 Sección de Login/Register
-Registro:
+# Registro:
+
+![foto login](fotos/login.png)
 
 Establece un nombre de usuario y una contraseña.
 Selecciona el restaurante en el que vas a trabajar.
 Inicio de Sesión:
 
 Introduce tus credenciales para iniciar sesión.
-Menú Principal
+# Menú Principal:
+![Texto alternativo](/fotos/menu.png)
+
 En el menú principal, encontrarás cuatro botones para navegar entre las diferentes secciones de la aplicación: Horarios, Pedidos, Recetas y Salir. También hay un carrusel de imágenes de restaurantes.
 
-Horarios
+# Horarios:
+![Texto alternativo](/fotos/horarios.png)
+
 En esta sección, dispones de un TableView que describe la tabla horarios de la base de datos. Puedes:
 
 Hacer clic en un horario para modificarlo.
 Consultar visualmente los horarios.
 Crear nuevos horarios.
 Volver al menú principal.
-Recetas
+
+# Recetas
+![Texto alternativo](/fotos/recetas.png)
+
 En esta sección, puedes seleccionar un producto y ver un pop-up con la receta del producto. Esto es útil para los empleados para evitar la formación tradicional.
 
-Pedidos
+# Pedidos
 Esta es la sección más importante de la aplicación:
+![Texto alternativo](/fotos/pedidos.png)
+
 
 Los trabajadores pueden registrar los productos que consumen los clientes.
 Muestra una ventana con el precio total y una lista de productos pedidos.
