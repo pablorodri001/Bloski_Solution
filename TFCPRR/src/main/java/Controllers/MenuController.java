@@ -26,7 +26,7 @@ public class MenuController extends GenericController implements Initializable {
     private TurnosController turnosController;
     private PedidosController pedidosController;
 
-    double imageWidth = 450.0; // Ancho deseado para las imágenes
+    double imageWidth = 450.0;
     double imageHeight = 400.0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
