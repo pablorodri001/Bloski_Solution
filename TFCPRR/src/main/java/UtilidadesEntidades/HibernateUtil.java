@@ -151,7 +151,7 @@ public class HibernateUtil {
     public static int obtenerUltimoIdCliente() {
         try{Session session = sf.openSession();
         session.beginTransaction();
-        String hql = "select max(c.idCliente) from Clientes c";
+        String hql = "select max(c.idCliente) from Pedidos c";
         Integer maxId = session.createQuery(hql, Integer.class).uniqueResult();
         return maxId != null ? maxId : 0;
         }
