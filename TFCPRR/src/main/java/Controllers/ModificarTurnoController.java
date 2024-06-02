@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 
 public class ModificarTurnoController {
     @FXML
@@ -41,11 +42,11 @@ public class ModificarTurnoController {
         stage.close();
     }
 
-    private LocalDate dateToLocalDate(java.util.Date date) {
+    private LocalDate dateToLocalDate(Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    private java.util.Date localDateToDate(LocalDate localDate) {
-        return java.util.Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    private Date localDateToDate(LocalDate localDate) {
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }
