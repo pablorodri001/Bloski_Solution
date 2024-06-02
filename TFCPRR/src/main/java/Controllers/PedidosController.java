@@ -214,7 +214,6 @@ public class PedidosController extends GenericController {
         } else {
             System.out.println("Error al guardar el pedido");
         }
-        
         mostrarPopupExito(toEmail);
     }
 
