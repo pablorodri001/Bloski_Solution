@@ -7,6 +7,7 @@ import UtilidadesEntidades.Mail;
 import UtilidadesEntidades.PdfGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
@@ -213,6 +214,8 @@ public class PedidosController extends GenericController {
         } else {
             System.out.println("Error al guardar el pedido");
         }
+        
+        mostrarPopupExito(toEmail);
     }
 
     public void handleLimpiarPedido(ActionEvent actionEvent) {
@@ -261,5 +264,13 @@ public class PedidosController extends GenericController {
             total += cantidad * precio;
             totalLabel.setText(String.format("%.2f$", total));
         }
+    }
+
+    private void mostrarPopupExito(String email) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Factura Generada");
+        alert.setHeaderText(null);
+        alert.setContentText("Factura generada y enviada al siguiente email: " + email);
+        alert.showAndWait();
     }
 }
